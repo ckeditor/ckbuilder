@@ -1,0 +1,114 @@
+<project name="ckbuilder" default="jar" basedir="../../">
+	<property name="bin.dir" location="bin" />
+	<property name="tmp.dir" location="tmp" />
+	<property name="build.dir" location="tmp/build" />
+	<property name="source.dir" location="src" />
+	<property name="json.dir" location="lib/json" />
+	<property name="rhino.jar" location="lib/rhino/js.jar" />
+	<property name="closure.jar" location="lib/closure/compiler.jar" />
+	<property name="commons-cli.jar" location="lib/apache/commons-cli.jar" />
+	<property name="tar.jar" location="lib/javatar/tar.jar" />
+
+	<target name="init">
+		<tstamp />
+		<delete dir="${build.dir}" />
+		<mkdir dir="${build.dir}/ckbuilder/lib" />
+		<mkdir dir="${build.dir}/tools/json" />
+	</target>
+
+	<target name="compile" depends="init" description="compile js">
+		<!-- ckbuilder -->
+		<java fork="yes" classname="org.mozilla.javascript.tools.jsc.Main" failonerror="true">
+			<arg value="-debug" />
+			<arg value="-package" />
+			<arg value="ckbuilder" />
+			<arg value="${source.dir}/ckbuilder.js" />
+			<classpath>
+				<pathelement location="${rhino.jar}"/>
+			</classpath>
+		</java>
+		<java fork="yes" classname="org.mozilla.javascript.tools.jsc.Main" failonerror="true">
+			<arg value="-debug" />
+			<arg value="-package" />
+			<arg value="ckbuilder.lib" />
+			<arg value="${source.dir}/lib/builder.js" />
+			<arg value="${source.dir}/lib/config.js" />
+			<arg value="${source.dir}/lib/controller.js" />
+			<arg value="${source.dir}/lib/css.js" />
+			<arg value="${source.dir}/lib/cssmin.js" />
+			<arg value="${source.dir}/lib/image.js" />
+			<arg value="${source.dir}/lib/io.js" />
+			<arg value="${source.dir}/lib/javascript.js" />
+			<arg value="${source.dir}/lib/lang.js" />
+			<arg value="${source.dir}/lib/plugin.js" />
+			<arg value="${source.dir}/lib/samples.js" />
+			<arg value="${source.dir}/lib/skin.js" />
+			<arg value="${source.dir}/lib/tools.js" />
+			<arg value="${source.dir}/lib/utils.js" />
+			<classpath>
+				<pathelement location="${rhino.jar}"/>
+			</classpath>
+		</java>
+		<!-- json -->
+		<java fork="yes" classname="org.mozilla.javascript.tools.jsc.Main" failonerror="true">
+			<arg value="-debug" />
+			<arg value="-package" />
+			<arg value="tools.json" />
+			<arg value="${json.dir}/json2.js" />
+			<classpath>
+				<pathelement location="${rhino.jar}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<!--
+	During compilation if -package option is used, file is located automatically in a subdirectory based on the package name,
+	that's why for example we have anther tools/json subdirectory inside ot tools/json directory.
+	 -->
+	<target name="copy" depends="compile" description="copy files">
+		<!-- ckbuilder -->
+		<copy file="${source.dir}/ckbuilder/ckbuilder.class" tofile="${build.dir}/ckbuilder/ckbuilder.class" overwrite="true" />
+		<copy todir="${build.dir}/ckbuilder">
+			<fileset dir="${source.dir}/lib/ckbuilder" />
+		</copy>
+		<!-- json -->
+		<copy file="${json.dir}/tools/json/json2.class" tofile="${build.dir}/tools/json/json2.class" overwrite="true" />
+		<!-- Rhino jar file that will be updated -->
+		<copy file="${rhino.jar}" tofile="${tmp.dir}/ckbuilder.jar" overwrite="true" />
+	</target>
+
+	<target name="unpack" depends="copy" description="merge all jar files into one">
+		<unjar src="${tar.jar}" dest="${build.dir}" />
+		<unjar src="${closure.jar}" dest="${build.dir}" />
+		<unjar src="${commons-cli.jar}" dest="${build.dir}" />
+		<!-- Leave mailcap.default and mimetypes.default from META-INF attached to activation.jar -->
+		<delete includeemptydirs="true">
+			<fileset dir="${build.dir}/META-INF" excludes="**/*.default" />
+		</delete>
+	</target>
+
+	<target name="jar" depends="unpack" description="update the jar">
+		<!-- Put everything in ${build.dir} into a jar file -->
+		<jar jarfile="${tmp.dir}/ckbuilder.jar" update="true">
+			<fileset dir="${build.dir}">
+				<include name="**/*" />
+			</fileset>
+			<fileset file="${source.dir}/assets/help.txt" />
+			<fileset file="${source.dir}/assets/help-extra.txt" />
+			<fileset file="${source.dir}/assets/help-build.txt" />
+			<manifest>
+				<attribute name="Main-Class" value="ckbuilder.ckbuilder" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="clean" description="clean up">
+		<move file="${tmp.dir}/ckbuilder.jar" tofile="${bin.dir}/ckbuilder.jar" overwrite="true" />
+		<!-- delete all folders created during javascript to java compilation -->
+		<delete dir="${source.dir}/ckbuilder" />
+		<delete dir="${source.dir}/lib/ckbuilder" />
+		<delete dir="${json.dir}/tools" />
+		<delete dir="${tmp.dir}" />
+	</target>
+
+</project>

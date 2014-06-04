@@ -1,0 +1,2 @@
+﻿aa 3.1beta cc
+3.1beta bb %VERSION dd

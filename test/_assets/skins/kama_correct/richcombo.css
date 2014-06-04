@@ -1,0 +1,152 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+/* Special Combo */
+
+.cke_combo
+{
+	display: inline-block;
+	float: left;
+}
+
+.cke_rtl .cke_combo
+{
+	float: right;
+}
+
+.cke_combo_label
+{
+	display: none;
+	float: left;
+	line-height: 26px;
+	vertical-align: top;
+	margin-right: 5px;
+	filter: alpha(opacity = 70); /* IE */
+	opacity: 0.70; /* Safari, Opera and Mozilla */
+}
+
+.cke_rtl .cke_combo_label
+{
+	float: right;
+	margin-left: 5px;
+	margin-right: 0;
+}
+
+.cke_combo_button
+{
+	display: inline-block;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background-image: url(images/sprites.png);
+	background-repeat: repeat-x;
+	background-position: 0 -100px;
+	border-bottom: 1px solid #DAD9D9;
+	border-right: 1px solid #DAD9D9;
+	float: left;
+	padding: 2px 4px 2px 6px;
+	height: 22px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	border: 0;
+
+	background: -moz-linear-gradient(bottom, #fff, #d3d3d3 100px);
+	background: -webkit-gradient(linear, left bottom, left -100, from(#fff), to(#d3d3d3));
+}
+
+a.cke_combo_button:focus,
+a.cke_combo_button:active
+{
+	background: #DFF1FF;
+	outline: none;
+}
+
+.cke_rtl .cke_combo_button
+{
+	float: right;
+	margin-left: 5px;
+	margin-right: 0;
+}
+
+.cke_hc .cke_combo_button
+{
+	border: 1px solid black;
+	padding: 1px 3px 1px 3px;
+}
+
+.cke_hc .cke_rtl .cke_combo_button
+{
+	border: 1px solid black;
+}
+
+.cke_combo_text
+{
+	line-height: 24px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #666666;
+	float: left;
+	cursor: default;
+}
+
+.cke_combo_inlinelabel
+{
+	font-style: italic;
+	opacity: 0.70;
+}
+
+.cke_rtl .cke_combo_text
+{
+	float: right;
+	text-align: right;
+}
+
+.cke_combo_open
+{
+    cursor: default;
+    display: inline-block;
+    font-size: 0;
+    height: 19px;
+    line-height: 17px;
+    margin: 1px 3px;
+    width: 5px;
+}
+
+.cke_combo_arrow
+{
+	margin: 9px 0 0;
+	float: left;
+	opacity: 0.70;
+
+	/* Pure CSS Arrow */
+	height: 0;
+	width: 0;
+	font-size: 0;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-top: 3px solid #2f2f2f;
+}
+
+.cke_hc .cke_combo_arrow
+{
+	font-size: 10px;
+	width: auto;
+	border: 0;
+	margin-top: 4px;
+}
+
+a.cke_combo_button:hover .cke_combo_inlinelabel
+{
+	opacity: 1;
+}
+
+.cke_combopanel
+{
+	border: 1px solid #8f8f73;
+	-moz-border-radius-topleft: 0;
+	-webkit-border-top-left-radius: 0;
+	border-top-left-radius: 0;
+	height: auto;
+}

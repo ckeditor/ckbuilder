@@ -1,0 +1,92 @@
+** ADVANCED COMMANDS **
+If you're unsure what these commands are for, just ignore them.
+
+[TASK: preprocess core files]
+SYNOPSIS:
+  --preprocess-core SRC DST (options...)
+      [OPTIONS]
+      SRC  source folder
+      DST  destination folder
+      [OPTIONS]
+      --build-config <FILE>     path to the file
+      --version <NUMBER>        version number
+      --revision <NUMBER>       revision number
+      --leave-js-unminified     leave javascript files as is:
+                                merge, but do not minify.
+      --no-ie-checks            turn off warnings about syntax errors on
+                                Internet Explorer, like trailing commas
+
+DESCRIPTION:
+  Preprocess core files. Creates ckeditor.js with no plugins enabled.
+  Converts language files into "intermediate" format.
+
+EXAMPLE:
+  java -jar ckbuilder.jar --preprocess-core ckeditor-dev output
+
+[TASK: preprocess plugin]
+SYNOPSIS:
+  --preprocess-plugin SRC DST (options...)
+      [OPTIONS]
+      SRC  source folder
+      DST  destination folder
+      [OPTIONS]
+      --build-config <FILE>     path to the file
+      --leave-js-unminified     leave javascript files as is
+      --no-ie-checks            turn off warnings about syntax errors on
+                                Internet Explorer, like trailing commas
+
+DESCRIPTION:
+  Preprocess plugin folder. Minifies JavaScript files.
+  Fixes missing entries and converts language files into "intermediate" format.
+
+EXAMPLE:
+  java -jar ckbuilder.jar --preprocess-plugin devtools output
+
+[TASK: preprocess skin]
+SYNOPSIS:
+  --preprocess-skin SRC DST (options...)
+      [OPTIONS]
+      SRC  source folder
+      DST  destination folder
+      [OPTIONS]
+      --build-config <FILE>     path to the file
+      --leave-js-unminified     leave javascript files as is
+      --no-ie-checks            turn off warnings about syntax errors on
+                                Internet Explorer, like trailing commas
+
+DESCRIPTION:
+  Preprocess skin folder. Minifies JavaScript files.
+  Merges CSS files.
+
+EXAMPLE:
+  java -jar ckbuilder.jar --preprocess-skin kama output
+
+[TASK: verify plugin]
+SYNOPSIS:
+  --verify-plugin SRC
+      [OPTIONS]
+      SRC  source folder (or zip file)
+      [OPTIONS]
+      --name         the name of the plugin to be found in plugin.js
+
+DESCRIPTION:
+  Verifies the plugin folder / zip file with a plugin.
+  Checks for plugin.js and tries to parse JS files looking for syntax errors.
+
+EXAMPLE:
+  java -jar ckbuilder.jar --verify-plugin devtools
+
+[TASK: verify skin]
+SYNOPSIS:
+  --verify-skin SRC
+      [OPTIONS]
+      SRC  source folder (or zip file)
+      [OPTIONS]
+      --name         the name of the skin to be found in skin.js
+
+DESCRIPTION:
+  Verifies the skin folder / zip file with a skin.
+  Checks for skin.js and tries to parse JS files looking for syntax errors.
+
+EXAMPLE:
+  java -jar ckbuilder.jar --verify-skin kama

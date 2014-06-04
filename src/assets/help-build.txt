@@ -1,0 +1,57 @@
+The build configuration is a critical file required to build the release.
+
+A sample build configuration (build-config.js) looks as follows:
+
+
+var CKBUILDER_CONFIG = {
+  skin : 'kama',
+  ignore : [
+      '_dev',
+      '.gitignore',
+      '.gitattributes'
+  ],
+  plugins :
+  {
+      a11yhelp : 1,
+      about : 1,
+     // more plugins
+  },
+  js : [
+     '/path/to/file1.js,start'
+     '/path/to/file2.js,aftercore',
+     '/path/to/file3.js,end',
+     '/path/to/file4.js',
+  ]
+}
+
+
+[PROPERTIES]
+    skin         The name of the default skin.
+    ignore       The set of files/folders to ignore.
+    plugins      The list of plugins to include in the release.
+    js           An optional array of javascript files to append at the end
+                 of ckeditor.js.
+                 It is possible to specify precisely, where the file should
+                 be added to ckeditor.js. Add a colon and one of the
+                 properties: start, aftercore, end.
+                    start       prepend javascript files at the beginning of
+                                ckeditor.js
+                    aftercore   add javascript files in the middle of
+                                ckeditor.js, before plugin files
+                    end         add javascript files at the end (default).
+
+
+In oder to generate the base build configuration file (build-config.js), run the
+following command:
+
+    java -jar ckbuilder.jar --generate-build-config ckeditor-dev
+
+("ckeditor-dev" is the name of a folder with source files).
+
+After commenting out plugins that are not needed, to build the release run:
+
+    java -jar ckbuilder.jar --build ckeditor-dev release --version 4.0
+
+Need more help? Run:
+
+    java -jar ckbuilder.jar --help

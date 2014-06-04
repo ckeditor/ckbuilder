@@ -1,0 +1,9 @@
+/*
+Copyright (c) 2003-2011, Frederico Caldeira Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+/* #3766 In the context menu, long labels with second level menu get wrapped */
+p {color:#666}
+u {top:5px}
+/* END #3766 */

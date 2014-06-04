@@ -1,0 +1,74 @@
+CKBuilder 2.0.1
+
+USAGE: java -jar ckbuilder.jar
+
+[TASK: build release]
+SYNOPSIS:
+  --build SRC DST (options...)
+      SRC  source folder
+      DST  destination folder
+      [OPTIONS]
+      --build-config <FILE>     path to the file
+      --version <NUMBER>        version number
+      --revision <NUMBER>       revision number
+      --overwrite               overwrite target folder if exists
+      -s,--skip-omitted-in-build-config
+                                exclude from release all plugins/skins
+                                that are not specified in build-config
+      --leave-js-unminified     leave javascript files as is:
+                                merge, but do not minify.
+      --leave-css-unminified    leave CSS files as is:
+                                merge, but do not minify.
+      --no-ie-checks            turn off warnings about syntax errors on
+                                Internet Explorer, like trailing commas
+      --core                    create only the core file (ckeditor.js)
+      --no-zip                  do not create zip file
+      --no-tar                  do not create tar.gz file
+
+DESCRIPTION:
+  Creates CKEditor build in DST folder using source files from SRC folder.
+  The build configuration file (build-config.js), which is required in order to
+  create the build package, contains the list of plugins to include.
+
+EXAMPLE:
+  java -jar ckbuilder.jar --build ckeditor-dev release --version 4.0
+
+[TASK: build skin]
+SYNOPSIS:
+  --build-skin SRC DST (options...)
+      SRC  source folder
+      DST  destination folder
+      [OPTIONS]
+      --overwrite               overwrite target folder if exists
+      --leave-js-unminified     leave javascript files as is:
+                                merge, but do not minify.
+      --leave-css-unminified    leave CSS files as is:
+                                merge, but do not minify.
+      --no-ie-checks            turn off warnings about syntax errors on
+                                Internet Explorer, like trailing commas
+
+DESCRIPTION:
+  Creates a release version of a skin.
+
+EXAMPLE:
+  java -jar ckbuilder.jar --build-skin skins/myskin target_dir
+
+[TASK: create build configuration file]
+SYNOPSIS:
+  --generate-build-config SRC (options...)
+      SRC  source folder
+      [OPTIONS]
+      --build-config <FILE>     path to the new file
+
+DESCRIPTION:
+  Creates build configuration file (default: build-config.js).
+
+EXAMPLE:
+  java -jar ckbuilder.jar --generate-build-config ckeditor-dev
+
+[OTHER OPTIONS]
+
+  -d,--debug-level <LEVEL> debug level (0, 1, 2).
+  --help                   prints help information
+  --build-help             prints help information about build configuration
+  --full-help              prints help information about all advanced commands

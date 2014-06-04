@@ -1,0 +1,72 @@
+{
+	"bitwise" : false,
+	// "forin" : true,
+	"immed" : true,
+	"latedef" : true,
+	"nonew" : true,
+	"smarttabs" : true,
+	"trailing" : true,
+	"undef" : true,
+	"unused": true,
+	"rhino" : true,
+	// "curly": true,
+	
+	"eqnull": true,
+	"eqeqeq": true,
+	"noarg": true,
+	// "onevar": true,,
+	"globals": {
+		"CKBuilder": false,
+		"CKBuilderTest": false,
+		"Integer": false,
+		"ImageIO": false,
+		"System": false,
+		"print": false,
+
+		"YAHOO": false,
+
+		"javax": false,
+		"com": false,
+		"org": false,
+		"BufferedImage": false,
+		"BufferedInputStream": false,
+		"BufferedOutputStream": false,
+		"BufferedReader": false,
+		"BufferedWriter": false,
+		"File": false,
+		"FileInputStream": false,
+		"FileOutputStream": false,
+		"InputStreamReader": false,
+		"OutputStreamWriter": false,
+		"Packages": false,
+		"Pattern": false,
+		"StringBuffer": false,
+		"ZipEntry": false,
+		"ZipFile": false,
+		"ZipOutputStream": false,
+
+		// Rhino
+		"importClass": false,
+		"importPackage": false,
+		"Context": false,
+		"CompilerEnvirons": false,
+
+		// Closure Compiler
+		"Compiler": false,
+		"CompilerOptions": false,
+		"CompilationLevel": false,
+		"JSSourceFile": false,
+
+		// Apache Commons CLI
+		"HelpFormatter": false,
+		"Options": false,
+		"OptionBuilder": false,
+
+		// com.ice.tar
+		"TarEntry": false,
+		"TarGzOutputStream": false,
+
+		// Apache Commons CLI
+		"PosixParser": false
+	}
+}

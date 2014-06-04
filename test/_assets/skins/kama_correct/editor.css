@@ -1,0 +1,42 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+@import url("reset.css");
+@import url("mainui.css");
+@import url("panel.css");
+@import url("toolbar.css");
+@import url("menu.css");
+@import url("richcombo.css");
+@import url("elementspath.css");
+@import url("presets.css");
+
+/* Restore the chrome visibility */
+.cke_chrome
+{
+	visibility: inherit;
+}
+
+.cke_button__about_icon {background: url(icons.png) no-repeat 0 -0px !important;}
+.cke_rtl .cke_button__anchor_icon, .cke_mixed_dir_content .cke_rtl .cke_button__anchor_icon {background: url(icons.png) no-repeat 0 -24px !important;}
+.cke_ltr .cke_button__anchor_icon {background: url(icons.png) no-repeat 0 -48px !important;}
+.cke_button__bgcolor_icon {background: url(icons.png) no-repeat 0 -72px !important;}
+.cke_button__bidiltr_icon {background: url(icons.png) no-repeat 0 -96px !important;}
+.cke_button__bidirtl_icon {background: url(icons.png) no-repeat 0 -120px !important;}
+.cke_button__blockquote_icon {background: url(icons.png) no-repeat 0 -144px !important;}
+.cke_button__bold_icon {background: url(icons.png) no-repeat 0 -168px !important;}
+.cke_rtl .cke_button__bulletedlist_icon, .cke_mixed_dir_content .cke_rtl .cke_button__bulletedlist_icon {background: url(icons.png) no-repeat 0 -192px !important;}
+.cke_ltr .cke_button__bulletedlist_icon {background: url(icons.png) no-repeat 0 -216px !important;}
+.cke_hidpi .cke_button__about_icon {background: url(icons_hidpi.png) no-repeat 0 -0px !important;background-size: 16px !important;}
+.cke_rtl.cke_hidpi .cke_button__anchor_icon, .cke_hidpi .cke_mixed_dir_content .cke_rtl .cke_button__anchor_icon {background: url(icons_hidpi.png) no-repeat 0 -48px !important;}
+.cke_hidpi .cke_ltr .cke_button__anchor_icon,
+.cke_ltr.cke_hidpi .cke_button__anchor_icon {background: url(icons_hidpi.png) no-repeat 0 -96px !important;}
+.cke_hidpi .cke_button__bgcolor_icon {background: url(icons_hidpi.png) no-repeat 0 -144px !important;}
+.cke_hidpi .cke_button__bidiltr_icon {background: url(icons_hidpi.png) no-repeat 0 -192px !important;}
+.cke_hidpi .cke_button__bidirtl_icon {background: url(icons_hidpi.png) no-repeat 0 -240px !important;}
+.cke_hidpi .cke_button__blockquote_icon {background: url(icons_hidpi.png) no-repeat 0 -288px !important;}
+.cke_hidpi .cke_button__bold_icon {background: url(icons_hidpi.png) no-repeat 0 -336px !important;}
+.cke_rtl.cke_hidpi .cke_button__bulletedlist_icon, .cke_hidpi .cke_mixed_dir_content .cke_rtl .cke_button__bulletedlist_icon {background: url(icons_hidpi.png) no-repeat 0 -192px !important;background-size: 16px !important;}
+.cke_hidpi .cke_ltr .cke_button__bulletedlist_icon,
+.cke_ltr.cke_hidpi .cke_button__bulletedlist_icon {background: url(icons_hidpi.png) no-repeat 0 -216px !important;background-size: 16px !important;}

@@ -1,0 +1,9 @@
+{
+	"--title": "CKBuilder Source Code Documentation",
+	"--footer": "Copyright &copy; 2012-2014, <a href=\"http://cksource.com\" style=\"color:#085585\">CKSource</a> - Frederico Knabben. All rights reserved. | Generated with <a href=\"https://github.com/senchalabs/jsduck\">JSDuck</a>.",
+	"--warnings": "-nodoc",
+	"--output": "./output",
+	"--": [
+		"../src"
+	]
+}

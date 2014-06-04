@@ -1,0 +1,2 @@
+﻿aa %TIMESTAMP% cc
+bb %TIMESTAMP Редакторdd %TIMESTAMP%

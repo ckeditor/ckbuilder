@@ -1,0 +1,7 @@
+﻿aa bb
+cc %REMOVE_START% dd
+ee ff
+gg %REMOVE_END%hh
+ii jj
+kk %REMOVE_START% iii %REMOVE_END% ll
+mm

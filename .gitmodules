@@ -1,0 +1,3 @@
+[submodule "dev/scripts/ckeditor"]
+	path = dev/scripts/ckeditor
+	url = git@github.com:ckeditor/ckeditor-dev.git

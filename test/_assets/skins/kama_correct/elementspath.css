@@ -1,0 +1,38 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+
+.cke_path
+{
+	margin-top: 5px;
+	float: left;
+}
+
+.cke_path_item,
+.cke_path_empty
+{
+	display: inline-block;
+	float: left;
+	padding: 1px 4px 0;
+	color: #60676a;
+	cursor: default;
+	text-decoration: none;
+	outline: 0;
+	border: 0;
+}
+.cke_rtl .cke_path,
+.cke_rtl .cke_path_item,
+.cke_rtl .cke_path_empty
+{
+	float: right;
+}
+
+a.cke_path_item:hover,
+a.cke_path_item:focus,
+a.cke_path_item:active
+{
+	background-color: #efefef;
+	opacity: 0.7;
+	color: #000;
+}
