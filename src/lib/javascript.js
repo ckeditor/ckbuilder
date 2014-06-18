@@ -59,7 +59,25 @@ importClass( com.google.javascript.jscomp.SourceFile );
 			result = compiler.compile( extern, input, options );
 
 		if ( result.success )
-			return compiler.toSource();
+		{
+			var source = compiler.toSource();
+			var sourceMapFile = file.getName() + ".map";
+
+			// TODO: actually, to create source maps we need separate CKEditor source files instead of merged JS...
+			if ( CKBuilder.options.createSourceMap && file.getName() == 'ckeditor.js' ) {
+				source += "//# sourceMappingURL=" + sourceMapFile;
+
+				var sourceMap = compiler.getSourceMap();
+				sourceMap.validate( true );
+				// TODO: sourcemap and BOM
+				sourceMap.setWrapperPrefix( CKBuilder.utils.copyright( CKBuilder.options.leaveJsUnminified ? "\r\n" : "\n" ) );
+				var sb = new java.lang.StringBuffer();
+				sourceMap.appendTo( sb, sourceMapFile );
+				CKBuilder.io.saveFile( file.getAbsolutePath() + ".map", sb.toString(), false );
+			}
+
+			return source;
+		}
 		else
 			throw( "Unable to compile file: " + file.getAbsolutePath() );
 	}
