@@ -16,9 +16,10 @@ SYNOPSIS:
                                 exclude from release all plugins/skins
                                 that are not specified in build-config
       --leave-js-unminified     leave javascript files as is:
-                                merge, but do not minify.
+                                merge, but do not minify
       --leave-css-unminified    leave CSS files as is:
-                                merge, but do not minify.
+                                merge, but do not minify
+      --create-source-map       create source maps for javascript files
       --no-ie-checks            turn off warnings about syntax errors on
                                 Internet Explorer, like trailing commas
       --core                    create only the core file (ckeditor.js)
@@ -41,9 +42,10 @@ SYNOPSIS:
       [OPTIONS]
       --overwrite               overwrite target folder if exists
       --leave-js-unminified     leave javascript files as is:
-                                merge, but do not minify.
+                                merge, but do not minify
       --leave-css-unminified    leave CSS files as is:
-                                merge, but do not minify.
+                                merge, but do not minify
+      --create-source-map       create source maps for javascript files
       --no-ie-checks            turn off warnings about syntax errors on
                                 Internet Explorer, like trailing commas
 

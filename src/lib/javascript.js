@@ -12,7 +12,7 @@ importClass( java.util.regex.Matcher );
 importClass( com.google.javascript.jscomp.CompilationLevel );
 importClass( com.google.javascript.jscomp.Compiler );
 importClass( com.google.javascript.jscomp.CompilerOptions );
-importClass( com.google.javascript.jscomp.JSSourceFile );
+importClass( com.google.javascript.jscomp.SourceFile );
 
 ( function() {
 
@@ -20,7 +20,6 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 	 * Compile JavaScript file.
 	 *
 	 * @param {java.io.File} file
-	 * http://closure-compiler.googlecode.com/svn/trunk/javadoc/index.html
 	 * @member CKBuilder.javascript
 	 * @private
 	 * @returns {String}
@@ -29,8 +28,6 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 		var compiler = new Compiler();
 		compiler.setLoggingLevel( java.util.logging.Level.WARNING );
 
-		// http://closure-compiler.googlecode.com/svn/trunk/javadoc/index.html
-		// http://closure-compiler.googlecode.com/svn/trunk/javadoc/com/google/javascript/jscomp/CompilerOptions.html
 		var options = new CompilerOptions();
 
 		// Otherwise strings in language files are escaped as \u1234 making them larger
@@ -38,16 +35,25 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 
 		// This is required in order to compile JS files with JSC_TRAILING_COMMA errors
 		options.setWarningLevel( com.google.javascript.jscomp.DiagnosticGroups.INTERNET_EXPLORER_CHECKS, CKBuilder.options.noIeChecks ? com.google.javascript.jscomp.CheckLevel.OFF : com.google.javascript.jscomp.CheckLevel.WARNING );
+		options.setWarningLevel( com.google.javascript.jscomp.DiagnosticGroups.NON_STANDARD_JSDOC, com.google.javascript.jscomp.CheckLevel.OFF);
+
+		// https://developer.chrome.com/devtools/docs/javascript-debugging#source-maps
+		if ( CKBuilder.options.createSourceMap )
+		{
+			options.setSourceMapOutputPath( file.getAbsolutePath() + ".map" );
+			options.setSourceMapDetailLevel( com.google.javascript.jscomp.SourceMap.DetailLevel.ALL );
+			options.setSourceMapFormat( com.google.javascript.jscomp.SourceMap.Format.V3 );
+		}
 
 		CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel( options );
 
 		// To get the complete set of externs, the logic in
 		// CompilerRunner.getDefaultExterns() should be used here.
-		var extern = JSSourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
+		var extern = SourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
 
 			// The dummy input name "input.js" is used here so that any warnings or
 			// errors will cite line numbers in terms of input.js.
-			input = JSSourceFile.fromCode( file.getName(), CKBuilder.io.readFile( file ) ),
+			input = SourceFile.fromCode( file.getName(), CKBuilder.io.readFile( file ) ),
 
 			// compile() returns a Result, but it is not needed here.
 			result = compiler.compile( extern, input, options );
@@ -82,11 +88,11 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 
 			// To get the complete set of externs, the logic in
 			// CompilerRunner.getDefaultExterns() should be used here.
-			var extern = JSSourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
+			var extern = SourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
 
 				// The dummy input name "input.js" is used here so that any warnings or
 				// errors will cite line numbers in terms of input.js.
-				input = JSSourceFile.fromCode( fileName || "input.js", code );
+				input = SourceFile.fromCode( fileName || "input.js", code );
 
 			// compile() returns a Result, but it is not needed here.
 			compiler.compile( extern, input, options );
@@ -122,6 +128,7 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 
 			// This is required in order to compile JS files with JSC_TRAILING_COMMA errors
 			options.setWarningLevel( com.google.javascript.jscomp.DiagnosticGroups.INTERNET_EXPLORER_CHECKS, CKBuilder.options.noIeChecks ? com.google.javascript.jscomp.CheckLevel.OFF : com.google.javascript.jscomp.CheckLevel.WARNING );
+			options.setWarningLevel( com.google.javascript.jscomp.DiagnosticGroups.NON_STANDARD_JSDOC, com.google.javascript.jscomp.CheckLevel.OFF);
 
 			// Otherwise strings in language files are escaped as \u1234 making them larger
 			options.outputCharset = 'UTF-8';
@@ -129,11 +136,11 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 
 				// To get the complete set of externs, the logic in
 				// CompilerRunner.getDefaultExterns() should be used here.
-			var extern = JSSourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
+			var extern = SourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
 
 				// The dummy input name "input.js" is used here so that any warnings or
 				// errors will cite line numbers in terms of input.js.
-				input = JSSourceFile.fromCode( fileName || "input.js", code ),
+				input = SourceFile.fromCode( fileName || "input.js", code ),
 				result = compiler.compile( extern, input, options );
 
 			if ( result.success )

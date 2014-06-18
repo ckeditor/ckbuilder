@@ -35,6 +35,7 @@ CKBuilder.Controller = function() {
 		[ null, "build-config", [ "FILE", "path to the file" ], "path to the build configuration" ],
 		[ null, "leave-js-unminified", false, "leave javascript files as is, do not minify them" ],
 		[ null, "leave-css-unminified", false, "leave CSS files as is, do not minify them" ],
+		[ null, "create-source-map", false, "build the core file (ckeditor.js) with source map" ],
 		[ "s", "skip-omitted-in-build-config", false, "exclude from release all plugins/skins that are not specified in build-config" ],
 		[ null, "revision", [ "NUMBER", "revision number" ], "revision number" ],
 		[ null, "version", [ "NUMBER", "version number" ], "version number" ],
@@ -205,6 +206,9 @@ CKBuilder.Controller.prototype = {
 
 		if ( line.hasOption( "leave-js-unminified" ) )
 			CKBuilder.options.leaveJsUnminified = true;
+
+		if ( line.hasOption( "create-source-map" ) )
+			CKBuilder.options.createSourceMap = true;
 
 		if ( line.hasOption( "leave-css-unminified" ) )
 			CKBuilder.options.leaveCssUnminified = true;
