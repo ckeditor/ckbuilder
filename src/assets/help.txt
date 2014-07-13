@@ -1,4 +1,4 @@
-CKBuilder 2.0.1
+CKBuilder 2.0.2
 
 USAGE: java -jar ckbuilder.jar
 

@@ -62,13 +62,12 @@
 		if ( pluginFiles.length === 1 )
 			result = pluginFiles[ 0 ];
 
-		// let's exclude plugin.js located in the _source folder
+		// let's exclude plugin.js located in the _source or dev folders
 		else if ( pluginFiles.length > 1 ) {
 			var tmpArray = [];
 			for ( var i = 0; i < pluginFiles.length; i++ ) {
-				if ( !pluginFiles[ i ].match( /(\/|\\)_source\1/ ) )
+				if ( !pluginFiles[ i ].match( /(\/|\\)(?:_source|dev)\1/i ) )
 					tmpArray.push( pluginFiles[ i ] );
-
 			}
 
 			if ( tmpArray.length === 1 )
@@ -269,11 +268,11 @@
 
 						for ( var i = 0; i < pluginPaths.length; i++ ) {
 							pluginPaths[ i ] = String( pluginPaths[ i ].replace( workingDirPath, '' ) ).replace( /\\/g, '/' );
-							if ( !pluginPaths[ i ].match( /(\/|\\)_source\1/ ) )
+							if ( !pluginPaths[ i ].match( /(\/|\\)(?:_source|dev)\1/i ) )
 								tmpArray.push( pluginPaths[ i ] );
 						}
 						if ( !tmpArray.length )
-							errors += "Found more than one plugin.js:\n" + pluginPaths.join( "\n" ) + "\n";
+							errors += "Could not find plugin.js:\n" + pluginPaths.join( "\n" ) + "\n";
 						else if ( tmpArray.length > 1 )
 							errors += "Found more than one plugin.js:\n" + pluginPaths.join( "\n" ) + "\n";
 					} else
