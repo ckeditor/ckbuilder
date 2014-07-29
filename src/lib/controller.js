@@ -57,6 +57,15 @@ CKBuilder.Controller = function() {
 	 * @type {Object}
 	 */
 	this.commandsHandlers = {
+		'help': function() {
+			this.printHelp( [ 'help.txt' ] );
+		},
+		'full-help': function() {
+			this.printHelp( [ 'help.txt', 'help-extra.txt' ] );
+		},
+		'build-help': function() {
+			this.printHelp( [ 'help-build.txt' ] );
+		},
 		'build': function( args ) {
 			if ( args.length < 2 )
 				CKBuilder.error( "The build command requires two arguments." );
@@ -72,15 +81,6 @@ CKBuilder.Controller = function() {
 				CKBuilder.error( "The generate-build-config command requires an argument." );
 
 			CKBuilder.config.create( args[ 0 ] );
-		},
-		'help': function() {
-			this.printHelp( [ 'help.txt' ] );
-		},
-		'full-help': function() {
-			this.printHelp( [ 'help.txt', 'help-extra.txt' ] );
-		},
-		'build-help': function() {
-			this.printHelp( [ 'help-build.txt' ] );
 		},
 		'preprocess-core': function( args ) {
 			if ( args.length < 2 )
