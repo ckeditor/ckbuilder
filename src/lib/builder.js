@@ -495,19 +495,20 @@ CKBuilder.builder = function( srcDir, dstDir ) {
 			patch7588 = 'if(window.CKEDITOR&&window.CKEDITOR.dom)return;';
 
 		if ( extraCoreJavaScriptCode && extraCoreJavaScriptCode.start )
-			ckeditorjs += extraCoreJavaScriptCode.start.join( "" );
+			ckeditorjs += extraCoreJavaScriptCode.start.join( "\n" );
 
-		ckeditorjs += CKBuilder.io.readFile( File( sourceLocation, "core/ckeditor_base.js" ) );
-		ckeditorjs += CKBuilder.io.readFiles( coreScriptsSorted );
+		ckeditorjs += CKBuilder.io.readFile( File( sourceLocation, "core/ckeditor_base.js" ) ) + "\n";
+		ckeditorjs += CKBuilder.io.readFiles( coreScriptsSorted, "\n" );
 
 		if ( extraCoreJavaScriptCode && extraCoreJavaScriptCode.aftercore )
-			ckeditorjs += extraCoreJavaScriptCode.aftercore.join( "" );
+			ckeditorjs += extraCoreJavaScriptCode.aftercore.join( "\n" );
 
 		if ( sourceSkinFile )
-			ckeditorjs += CKBuilder.io.readFile( sourceSkinFile );
+			ckeditorjs += CKBuilder.io.readFile( sourceSkinFile ) + "\n";
+
 		if ( pluginNamesSorted.length > 0 ) {
 			var configEntry = "CKEDITOR.config.plugins='" + pluginNamesSorted.join( "," ) + "';";
-			ckeditorjs += CKBuilder.io.readFiles( sourcePluginFilesSorted ) + configEntry;
+			ckeditorjs += CKBuilder.io.readFiles( sourcePluginFilesSorted, "\n" ) + "\n" + configEntry;
 		}
 		// When the core is created for the preprocessed version of CKEditor, then it makes no sense to
 		// specify an empty "config.plugins", because config.plugins will be later set by the online builder.
@@ -515,14 +516,14 @@ CKBuilder.builder = function( srcDir, dstDir ) {
 			ckeditorjs += "CKEDITOR.config.plugins='';";
 
 		if ( config.language )
-			ckeditorjs += CKBuilder.io.readFile( languageFile );
+			ckeditorjs += CKBuilder.io.readFile( languageFile ) + "\n" ;
 
 		ckeditorjs = CKBuilder.tools.processDirectivesInString( ckeditorjs );
 		ckeditorjs = CKBuilder.tools.processCoreDirectivesInString( ckeditorjs );
 		ckeditorjs = CKBuilder.tools.removeLicenseInstruction( ckeditorjs );
 
 		if ( extraCode )
-			ckeditorjs += extraCode;
+			ckeditorjs += extraCode + "\n";
 
 		if ( 'build' === context && config.languages ) {
 			var langs = [];
