@@ -29,12 +29,14 @@ If you did not compile your own version of `ckbuilder.jar` and all you want to d
     ```
 
  3. That's it - CKBuilder will be downloaded automatically and a "release" version of CKEditor will be built in the new `dev/builder/release/` folder. 
+
+**Note:** CKBuilder which is run by calling ```build.sh``` script will use default ```build-config.js``` which define skin, files to be ignored and plugins. For more information about build-config run builder with ```--build-help``` command.
  
-**Note:** The shell script is designed to run on Mac/Linux. If you are a Windows user, install [Git for Windows](http://msysgit.github.io/), make sure "Git Bash" is checked during the installation process and then run this script using "Git Bash".
+**Note2:** The shell script is designed to run on Mac/Linux. If you are a Windows user, install [Git for Windows](http://msysgit.github.io/), make sure "Git Bash" is checked during the installation process and then run this script using "Git Bash".
 
 ### Using a custom ckbuilder.jar
 
-To get the list of all available commands, run:
+To get the list of all available commands and options, run:
 
 	> java -jar ckbuilder.jar --help
 
@@ -67,6 +69,10 @@ Used by the [online builder](http://ckeditor.com/builder), unless you intend to 
 **--generate-build-config**
 
 Creates a fresh `build-config.js`.
+
+### Build config
+
+
 
 ### License
 
