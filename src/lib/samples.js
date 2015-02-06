@@ -143,7 +143,7 @@
 		// <dt><a class="samples" href="api.html">Basic usage of the API</a></dt>
 		// <dd>Using the CKEditor JavaScript API to interact with the editor at runtime.</dd>
 		var out = [];
-		out.push( "\n", '<dt><a class="samples" href="', url, '">', info.name, '</a>' );
+		out.push( "\n", '<dt><a class="samples" href="../', url, '">', info.name, '</a>' );
 		if ( info.isnew )
 			out.push( ' <span class="new">New!</span>' );
 		if ( info.isbeta )
@@ -181,7 +181,7 @@
 		 * @static
 		 */
 		mergeSamples: function( sourceLocation ) {
-			var samplesLocation = new File( sourceLocation, 'samples' );
+			var samplesLocation = new File( sourceLocation, 'samples/old' );
 			if ( !samplesLocation.exists() ) {
 				if ( CKBuilder.options.debug )
 					print( "INFO: samples dir not found in " + sourceLocation.getAbsolutePath() );
