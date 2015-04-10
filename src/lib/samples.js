@@ -73,7 +73,7 @@
 			// Find the "samples" folder
 			var pluginSamplesLocation = new File( pluginsLocation, children[ i ] + '/samples' );
 			if ( pluginSamplesLocation.exists() && pluginSamplesLocation.isDirectory() ) {
-				mergeSamples( pluginSamplesLocation, new File( sourceLocation, 'samples/plugins/' + children[ i ] ), 'plugins/' + children[ i ] );
+				mergeSamples( pluginSamplesLocation, new File( sourceLocation, 'samples/old/' + children[ i ] ), children[ i ] );
 				CKBuilder.io.deleteDirectory( pluginSamplesLocation.getAbsolutePath() );
 			}
 		}
@@ -84,7 +84,7 @@
 	 *
 	 * @param {java.io.File} sourceLocation
 	 * @param {java.io.File} targetLocation
-	 * @param {String} path URL to a sample, relative to the root "samples" folder
+	 * @param {String} path URL to a sample, relative to the location of index.html with link to old samples
 	 * @private
 	 * @member CKBuilder.samples
 	 */
@@ -143,7 +143,7 @@
 		// <dt><a class="samples" href="api.html">Basic usage of the API</a></dt>
 		// <dd>Using the CKEditor JavaScript API to interact with the editor at runtime.</dd>
 		var out = [];
-		out.push( "\n", '<dt><a class="samples" href="../', url, '">', info.name, '</a>' );
+		out.push( "\n", '<dt><a class="samples" href="', url, '">', info.name, '</a>' );
 		if ( info.isnew )
 			out.push( ' <span class="new">New!</span>' );
 		if ( info.isbeta )
@@ -175,22 +175,23 @@
 	 */
 	CKBuilder.samples = {
 		/**
-		 * Merges samples from plugins folders into the root "samples" folder.
+		 * Merges samples from plugins folders into the root "samples/old" folder.
 		 *
 		 * @param {java.io.File} sourceLocation Path to CKEditor, where the "samples" and "plugins" folders are available.
 		 * @static
 		 */
 		mergeSamples: function( sourceLocation ) {
-			var samplesLocation = new File( sourceLocation, 'samples/old' );
+			var samplesFolder = 'samples/old';
+			var samplesLocation = new File( sourceLocation, samplesFolder );
 			if ( !samplesLocation.exists() ) {
 				if ( CKBuilder.options.debug )
-					print( "INFO: samples dir not found in " + sourceLocation.getAbsolutePath() );
+					print( "INFO: " + samplesFolder + " dir not found in " + sourceLocation.getAbsolutePath() );
 				return;
 			}
 			var indexFile = new File( samplesLocation, 'index.html' );
 			if ( !indexFile.exists() ) {
 				if ( CKBuilder.options.debug )
-					print( "index.html not found in the samples directory: " + samplesLocation.getAbsolutePath() );
+					print( "index.html not found in the " + samplesFolder + " directory: " + samplesLocation.getAbsolutePath() );
 				return;
 			}
 
@@ -200,7 +201,7 @@
 			// Nothing to do
 			if ( indexHtml.indexOf( "PLUGINS_SAMPLES" ) === -1 && indexHtml.indexOf( "ADVANCED_SAMPLES" ) === -1 && indexHtml.indexOf( "INLINE_EDITING_SAMPLES" ) === -1 ) {
 				if ( CKBuilder.options.debug )
-					print( 'samples/index.html does not contain any placeholders to replace' );
+					print( samplesFolder + '/index.html does not contain any placeholders to replace' );
 				CKBuilder.io.saveFile( indexFile, indexHtml, true );
 				return;
 			}
