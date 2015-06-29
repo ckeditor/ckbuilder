@@ -12,7 +12,7 @@ importClass( java.util.regex.Matcher );
 importClass( com.google.javascript.jscomp.CompilationLevel );
 importClass( com.google.javascript.jscomp.Compiler );
 importClass( com.google.javascript.jscomp.CompilerOptions );
-importClass( com.google.javascript.jscomp.JSSourceFile );
+importClass( com.google.javascript.jscomp.SourceFile );
 
 ( function() {
 
@@ -43,11 +43,11 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 
 		// To get the complete set of externs, the logic in
 		// CompilerRunner.getDefaultExterns() should be used here.
-		var extern = JSSourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
+		var extern = SourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
 
 			// The dummy input name "input.js" is used here so that any warnings or
 			// errors will cite line numbers in terms of input.js.
-			input = JSSourceFile.fromCode( file.getName(), CKBuilder.io.readFile( file ) ),
+			input = SourceFile.fromCode( file.getName(), CKBuilder.io.readFile( file ) ),
 
 			// compile() returns a Result, but it is not needed here.
 			result = compiler.compile( extern, input, options );
@@ -82,11 +82,11 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 
 			// To get the complete set of externs, the logic in
 			// CompilerRunner.getDefaultExterns() should be used here.
-			var extern = JSSourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
+			var extern = SourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
 
 				// The dummy input name "input.js" is used here so that any warnings or
 				// errors will cite line numbers in terms of input.js.
-				input = JSSourceFile.fromCode( fileName || "input.js", code );
+				input = SourceFile.fromCode( fileName || "input.js", code );
 
 			// compile() returns a Result, but it is not needed here.
 			compiler.compile( extern, input, options );
@@ -129,11 +129,11 @@ importClass( com.google.javascript.jscomp.JSSourceFile );
 
 				// To get the complete set of externs, the logic in
 				// CompilerRunner.getDefaultExterns() should be used here.
-			var extern = JSSourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
+			var extern = SourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
 
 				// The dummy input name "input.js" is used here so that any warnings or
 				// errors will cite line numbers in terms of input.js.
-				input = JSSourceFile.fromCode( fileName || "input.js", code ),
+				input = SourceFile.fromCode( fileName || "input.js", code ),
 				result = compiler.compile( extern, input, options );
 
 			if ( result.success )
