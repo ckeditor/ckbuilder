@@ -36,10 +36,20 @@ importClass( com.google.javascript.jscomp.SourceFile );
 		// Otherwise strings in language files are escaped as \u1234 making them larger
 		options.outputCharset = 'UTF-8';
 
+		CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel( options );
+
 		// This is required in order to compile JS files with JSC_TRAILING_COMMA errors
 		options.setWarningLevel( com.google.javascript.jscomp.DiagnosticGroups.INTERNET_EXPLORER_CHECKS, CKBuilder.options.noIeChecks ? com.google.javascript.jscomp.CheckLevel.OFF : com.google.javascript.jscomp.CheckLevel.WARNING );
 
-		CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel( options );
+		options.setWarningLevel(
+			com.google.javascript.jscomp.DiagnosticGroups.NON_STANDARD_JSDOC,
+			com.google.javascript.jscomp.CheckLevel.OFF
+		);
+
+		options.setWarningLevel(
+			com.google.javascript.jscomp.DiagnosticGroups.MISPLACED_TYPE_ANNOTATION,
+			com.google.javascript.jscomp.CheckLevel.OFF
+		);
 
 		// To get the complete set of externs, the logic in
 		// CompilerRunner.getDefaultExterns() should be used here.
@@ -121,7 +131,10 @@ importClass( com.google.javascript.jscomp.SourceFile );
 			var options = new CompilerOptions();
 
 			// This is required in order to compile JS files with JSC_TRAILING_COMMA errors
-			options.setWarningLevel( com.google.javascript.jscomp.DiagnosticGroups.INTERNET_EXPLORER_CHECKS, CKBuilder.options.noIeChecks ? com.google.javascript.jscomp.CheckLevel.OFF : com.google.javascript.jscomp.CheckLevel.WARNING );
+			options.setWarningLevel(
+				com.google.javascript.jscomp.DiagnosticGroups.INTERNET_EXPLORER_CHECKS,
+				CKBuilder.options.noIeChecks ? com.google.javascript.jscomp.CheckLevel.OFF : com.google.javascript.jscomp.CheckLevel.WARNING
+			);
 
 			// Otherwise strings in language files are escaped as \u1234 making them larger
 			options.outputCharset = 'UTF-8';
