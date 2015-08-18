@@ -399,6 +399,9 @@ CKBuilder.builder = function( srcDir, dstDir ) {
 					}
 					var copied = CKBuilder.tools.fixLineEndings( sourceLocation, targetLocation );
 					if ( copied ) {
+						if ( CKBuilder.options.commercial )
+							CKBuilder.tools.updateCopyrights( targetLocation );
+
 						var flag = CKBuilder.tools.processDirectives( targetLocation );
 						if ( flag.LEAVE_UNMINIFIED )
 							flags[ targetLocation.getAbsolutePath() ] = flag;

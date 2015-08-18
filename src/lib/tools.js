@@ -101,6 +101,37 @@
 		},
 
 		/**
+		 * Updates copyright headers in text files.
+		 *
+		 * @param {java.io.File} targetFile
+		 */
+		updateCopyrights: function( targetFile ) {
+			var extension = CKBuilder.io.getExtension( targetFile.getName() ),
+				bomExtensions = { asp: 1, js: 1 };
+
+			if ( !lineEndings[ extension ] ) {
+				return false;
+			}
+
+			text = CKBuilder.io.readFile( targetFile );
+			if ( text.indexOf( "Copyright" ) === -1 || text.indexOf( "CKSource" ) === -1 ) {
+				return;
+			}
+
+			if ( text.indexOf( 'For licensing, see LICENSE.md or http://ckeditor.com/license' ) !== -1 ) {
+				text = text.replace( 'For licensing, see LICENSE.md or http://ckeditor.com/license', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
+				return;
+			}
+
+			if ( text.indexOf( 'For licensing, see LICENSE.md or [http://ckeditor.com/license](http://ckeditor.com/license)' ) !== -1 ) {
+				text = text.replace( 'For licensing, see LICENSE.md or [http://ckeditor.com/license](http://ckeditor.com/license)', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
+				return;
+			}
+		},
+
+		/**
 		 * Returns the copyright statement found in the text
 		 * The Copyright statement starts either with "@license" or with "Copyright".
 		 *

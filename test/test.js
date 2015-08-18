@@ -614,6 +614,38 @@ CKBuilder.options.debug = 2;
 		assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking merged samples' );
 
 	}
+
+	function testCopyrights()
+	{
+		print( "\nTesting copyrights...\n" );
+		CKBuilder.options.commercial = true;
+		CKBuilder.options.leaveJsUnminified = true;
+		var sourceLocation = new File( assetsDir, 'copyrights' );
+		var targetLocation = new File( tempDir, 'copyrights' );
+		CKBuilder.io.copy( sourceLocation, targetLocation );
+
+		var testName, tempFile, correctFile;
+		var dir = new File( tempDir, 'copyrights' );
+		var dirList = dir.list();
+
+		for ( var i = 0 ; i < dirList.length ; i++ )
+		{
+			if ( dirList[i].indexOf( ".correct" ) === -1 )
+				continue;
+
+			testName = dirList[i].replace( ".correct", "" );
+
+			correctFile = new File( dir, testName + '.correct' );
+			tempFile = new File( dir, testName );
+			CKBuilder.tools.updateCopyrights( tempFile );
+
+			assertEquals( CKBuilder.io.readFile( correctFile ), CKBuilder.io.readFile( tempFile ),
+					'copyrights[' + testName + ']' );
+		}
+		CKBuilder.options.commercial = false;
+		CKBuilder.options.leaveJsUnminified = false;
+	}
+
 	prepareTempDirs();
 	testLangProps();
 	testLanguageFiles();
@@ -630,6 +662,7 @@ CKBuilder.options.debug = 2;
 	testVerifyPlugins();
 	testVerifySkins();
 	testSamples();
+	testCopyrights();
 
 	print( '' );
 	print( 'Finished: ' + passCount + ' passed / ' + failCount + ' failed' );

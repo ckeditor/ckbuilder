@@ -39,10 +39,11 @@ CKBuilder.Controller = function() {
 		[ null, "revision", [ "NUMBER", "revision number" ], "revision number" ],
 		[ null, "version", [ "NUMBER", "version number" ], "version number" ],
 		[ null, "overwrite", false, "overwrite target folder if exists" ],
-		[ null, "no-ie-checks", false, "Turn off warnings about syntax errors on Internet Explorer, like trailing commas." ],
+		[ null, "no-ie-checks", false, "turn off warnings about syntax errors on Internet Explorer, like trailing commas" ],
 		[ null, "no-zip", false, "do not create zip file" ],
 		[ null, "no-tar", false, "do not create tar.gz file" ],
 		[ null, "core", false, "build only the core file (ckeditor.js)" ],
+		[ null, "commercial", false, "builds a package with commercial license" ],
 		[ null, "name", [ "NAME", "expected name" ], "the expected name of the skin/plugin, used for verification" ],
 		[ "d", "debug-level", [ "LEVEL", "debug level (0, 1, 2)." ], "sets the debug level" ]
 	];
@@ -199,6 +200,9 @@ CKBuilder.Controller.prototype = {
 
 		if ( line.hasOption( "core" ) )
 			CKBuilder.options.core = true;
+
+		if ( line.hasOption( "commercial" ) )
+			CKBuilder.options.commercial = true;
 
 		if ( line.hasOption( "revision" ) )
 			CKBuilder.options.revision = line.getOptionValue( "revision" );
