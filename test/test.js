@@ -16,6 +16,10 @@ CKBuilder.options.debug = 2;
 	var tempPath = 'test/tmp';
 	var tempDir = new File( tempPath );
 
+	function removeTimestamp( text ) {
+		return text.replace( new RegExp( '\\?t=' + CKBuilder.options.timestamp, 'g' ), '' );
+	}
+
 	function isArray(o) {
 		return Object.prototype.toString.call(o) === '[object Array]';
 	}
@@ -53,8 +57,10 @@ CKBuilder.options.debug = 2;
 
 	function assertFilesAreEqual( expected, actual, title )
 	{
-		assertEquals( String( md5( CKBuilder.io.readFile( expected ) ) ), String( md5( CKBuilder.io.readFile( actual ) ) ),
-			'[' + title + '] Checking MD5 of ' + actual.getPath());
+		assertEquals(
+			String( md5( removeTimestamp( CKBuilder.io.readFile( expected ) ) ) ),
+			String( md5( removeTimestamp( CKBuilder.io.readFile( actual ) ) ) ),
+			'[' + title + '] Checking MD5 of ' + actual.getPath() );
 	}
 
 	function assertEquals( expected, actual, title )
@@ -204,7 +210,9 @@ CKBuilder.options.debug = 2;
 
 		CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins );
 
-		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
+		assertEquals(
+			CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons.correct.css" ) ),
+			removeTimestamp( CKBuilder.io.readFile( cssFile ) ),
 			'Checking content of icons.css' );
 		assertEquals( imageFile.exists(), true, "Sprite image should exist." );
 
@@ -225,8 +233,11 @@ CKBuilder.options.debug = 2;
 
 		CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins );
 
-		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons2.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
-			'Checking content of icons2.css' );
+		assertEquals(
+			CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons2.correct.css" ) ),
+			removeTimestamp( CKBuilder.io.readFile( cssFile ) ),
+			'Checking content of icons2.css'
+		);
 		assertEquals( imageFile.exists(), true, "Sprite image should exist." );
 
 		var image = ImageIO.read( imageFile );
@@ -246,8 +257,11 @@ CKBuilder.options.debug = 2;
 
 		CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins, true );
 
-		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons3.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
-			'Checking content of icons3.css' );
+		assertEquals(
+			CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons3.correct.css" ) ),
+			removeTimestamp( CKBuilder.io.readFile( cssFile ) ),
+			'Checking content of icons3.css'
+		);
 		assertEquals( imageFile.exists(), true, "Sprite image should exist." );
 
 		var image = ImageIO.read( imageFile );
@@ -392,7 +406,6 @@ CKBuilder.options.debug = 2;
 		});
 
 		var files = listFiles(targetLocation);
-		files.sort();
 		var validResult = [
 			'test/tmp/ignored/a11yhelp/lang/en.js',
 			'test/tmp/ignored/a11yhelp/lang/he.js',
@@ -406,7 +419,10 @@ CKBuilder.options.debug = 2;
 			'test/tmp/ignored/uicolor/plugin.js'];
 
 		assertEquals( files.length, 3, "Comparing plugins directories (same number of subfolders?)" );
-		var areEqual = files.toString().replace(/\\/g, "/") === validResult.toString();
+
+		// For some magic reason simple sorting doesn't work.
+		var areEqual = files.toString().split(",").sort().toString().replace(/\\/g, "/") === validResult.toString();
+
 		assertEquals( true, areEqual, "Comparing plugins directories (are equal?)" );
 	}
 
