@@ -392,7 +392,6 @@ CKBuilder.options.debug = 2;
 		});
 
 		var files = listFiles(targetLocation);
-		files.sort();
 		var validResult = [
 			'test/tmp/ignored/a11yhelp/lang/en.js',
 			'test/tmp/ignored/a11yhelp/lang/he.js',
@@ -406,7 +405,10 @@ CKBuilder.options.debug = 2;
 			'test/tmp/ignored/uicolor/plugin.js'];
 
 		assertEquals( files.length, 3, "Comparing plugins directories (same number of subfolders?)" );
-		var areEqual = files.toString().replace(/\\/g, "/") === validResult.toString();
+
+		// For some magic reason simple sorting doesn't work.
+		var areEqual = files.toString().split(",").sort().toString().replace(/\\/g, "/") === validResult.toString();
+
 		assertEquals( true, areEqual, "Comparing plugins directories (are equal?)" );
 	}
 
