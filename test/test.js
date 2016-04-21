@@ -510,21 +510,32 @@ CKBuilder.options.debug = 2;
 	{
 		print( "\nTesting skin builder...\n" );
 
+		var originalTimestamp = CKBuilder.options.timestamp;
+
+		// Stub the timestamp.
+		CKBuilder.options.timestamp = 'G3KH';
 		CKBuilder.options.leaveCssUnminified = true;
 		var sourceLocation = new File( assetsDir, 'skins/kama' );
 		var correctResultLocation = new File( assetsDir, 'skins/kama_correct' );
 		var targetLocation = new File( tempDir, 'skins/kama' );
 
-		CKBuilder.skin.build( sourceLocation, targetLocation );
-		assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification disabled)' );
+		try {
+			CKBuilder.skin.build( sourceLocation, targetLocation );
+			assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification disabled)' );
 
-		CKBuilder.options.leaveCssUnminified = false;
-		var sourceLocation = new File( assetsDir, 'skins_minified/kama' );
-		var correctResultLocation = new File( assetsDir, 'skins_minified/kama_correct' );
-		var targetLocation = new File( tempDir, 'skins_minified/kama' );
+			CKBuilder.options.leaveCssUnminified = false;
+			var sourceLocation = new File( assetsDir, 'skins_minified/kama' );
+			var correctResultLocation = new File( assetsDir, 'skins_minified/kama_correct' );
+			var targetLocation = new File( tempDir, 'skins_minified/kama' );
 
-		CKBuilder.skin.build( sourceLocation, targetLocation );
-		assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification enabled)' );
+			CKBuilder.skin.build( sourceLocation, targetLocation );
+			assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification enabled)' );
+		} catch ( e ) {
+			// In any case restore timestamp.
+			CKBuilder.options.timestamp = originalTimestamp;
+			// And rethrow the exception.
+			throw e;
+		}
 	}
 
 	function testVerifyPlugins()
