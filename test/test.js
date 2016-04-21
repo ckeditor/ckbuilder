@@ -15,6 +15,7 @@ CKBuilder.options.debug = 2;
 	var assetsDir = new File( assetsPath );
 	var tempPath = 'test/tmp';
 	var tempDir = new File( tempPath );
+	var timestampStub = 'G3KH';
 
 	function isArray(o) {
 		return Object.prototype.toString.call(o) === '[object Array]';
@@ -202,7 +203,16 @@ CKBuilder.options.debug = 2;
 		var imageFile = new File( tempPath + "/sprite/icons.png" );
 		var cssFile = new File( tempPath + "/sprite/icons.css" );
 
-		CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins );
+		var originalTimestamp = CKBuilder.options.timestamp;
+		CKBuilder.options.timestamp = timestampStub;
+		try {
+			CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins );
+		} catch ( e ) {
+		// In any case restore timestamp.
+		CKBuilder.options.timestamp = originalTimestamp;
+		// And rethrow the exception.
+		throw e;
+}
 
 		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
 			'Checking content of icons.css' );
@@ -244,7 +254,13 @@ CKBuilder.options.debug = 2;
 		var imageFile = new File( tempPath + "/sprite/icons3.png" );
 		var cssFile = new File( tempPath + "/sprite/icons3.css" );
 
-		CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins, true );
+		CKBuilder.options.timestamp = timestampStub;
+		try {
+			CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins, true );
+		} catch ( e ) {
+			CKBuilder.options.timestamp = originalTimestamp;
+			throw e;
+		}
 
 		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons3.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
 			'Checking content of icons3.css' );
@@ -513,7 +529,7 @@ CKBuilder.options.debug = 2;
 		var originalTimestamp = CKBuilder.options.timestamp;
 
 		// Stub the timestamp.
-		CKBuilder.options.timestamp = 'G3KH';
+		CKBuilder.options.timestamp = timestampStub;
 		CKBuilder.options.leaveCssUnminified = true;
 		var sourceLocation = new File( assetsDir, 'skins/kama' );
 		var correctResultLocation = new File( assetsDir, 'skins/kama_correct' );
