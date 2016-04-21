@@ -202,17 +202,18 @@ CKBuilder.options.debug = 2;
 
 		var imageFile = new File( tempPath + "/sprite/icons.png" );
 		var cssFile = new File( tempPath + "/sprite/icons.css" );
-
 		var originalTimestamp = CKBuilder.options.timestamp;
+
 		CKBuilder.options.timestamp = timestampStub;
+
 		try {
 			CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins );
 		} catch ( e ) {
-		// In any case restore timestamp.
-		CKBuilder.options.timestamp = originalTimestamp;
-		// And rethrow the exception.
-		throw e;
-}
+			// In any case restore timestamp.
+			CKBuilder.options.timestamp = originalTimestamp;
+			// And rethrow the exception.
+			throw e;
+		}
 
 		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
 			'Checking content of icons.css' );
