@@ -1,16 +1,16 @@
-.cke_hidpi .cke_button__strike_icon {background: url(icons_hidpi.png) no-repeat 0 -0px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__subscript_icon {background: url(icons_hidpi.png) no-repeat 0 -24px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__superscript_icon {background: url(icons_hidpi.png) no-repeat 0 -48px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__underline_icon {background: url(icons_hidpi.png) no-repeat 0 -72px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__anchor_icon {background: url(icons_hidpi.png) no-repeat 0 -192px !important;}
-.cke_hidpi .cke_button__link_icon {background: url(icons_hidpi.png) no-repeat 0 -120px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__unlink_icon {background: url(icons_hidpi.png) no-repeat 0 -144px !important;background-size: 16px !important;}
-.cke_rtl.cke_hidpi .cke_button__bulletedlist_icon, .cke_hidpi .cke_mixed_dir_content .cke_rtl .cke_button__bulletedlist_icon {background: url(icons_hidpi.png) no-repeat 0 -168px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__strike_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -0px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__subscript_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -24px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__superscript_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -48px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__underline_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -72px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__anchor_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -192px !important;}
+.cke_hidpi .cke_button__link_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -120px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__unlink_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -144px !important;background-size: 16px !important;}
+.cke_rtl.cke_hidpi .cke_button__bulletedlist_icon, .cke_hidpi .cke_mixed_dir_content .cke_rtl .cke_button__bulletedlist_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -168px !important;background-size: 16px !important;}
 .cke_hidpi .cke_ltr .cke_button__bulletedlist_icon,
-.cke_ltr.cke_hidpi .cke_button__bulletedlist_icon {background: url(icons_hidpi.png) no-repeat 0 -192px !important;background-size: 16px !important;}
-.cke_rtl.cke_hidpi .cke_button__numberedlist_icon, .cke_hidpi .cke_mixed_dir_content .cke_rtl .cke_button__numberedlist_icon {background: url(icons_hidpi.png) no-repeat 0 -216px !important;background-size: 16px !important;}
+.cke_ltr.cke_hidpi .cke_button__bulletedlist_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -192px !important;background-size: 16px !important;}
+.cke_rtl.cke_hidpi .cke_button__numberedlist_icon, .cke_hidpi .cke_mixed_dir_content .cke_rtl .cke_button__numberedlist_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -216px !important;background-size: 16px !important;}
 .cke_hidpi .cke_ltr .cke_button__numberedlist_icon,
-.cke_ltr.cke_hidpi .cke_button__numberedlist_icon {background: url(icons_hidpi.png) no-repeat 0 -240px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__table_icon {background: url(icons_hidpi.png) no-repeat 0 -264px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__bold_icon {background: url(icons_hidpi.png) no-repeat 0 -288px !important;background-size: 16px !important;}
-.cke_hidpi .cke_button__italic_icon {background: url(icons_hidpi.png) no-repeat 0 -312px !important;background-size: 16px !important;}
+.cke_ltr.cke_hidpi .cke_button__numberedlist_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -240px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__table_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -264px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__bold_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -288px !important;background-size: 16px !important;}
+.cke_hidpi .cke_button__italic_icon {background: url(icons_hidpi.png?t=G3KH) no-repeat 0 -312px !important;background-size: 16px !important;}
