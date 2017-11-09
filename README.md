@@ -21,7 +21,7 @@ Make sure to download the CKEditor submodule first:
 
 If you did not compile your own version of `ckbuilder.jar` and all you want to do is to build CKEditor, then there is a simpler way to do this:
 
- 1. Clone the [CKEditor](https://github.com/ckeditor/ckeditor-dev) repository (hint: there is a "Download ZIP" button on the right side of the page if you don't know how to use git).
+ 1. Clone the [CKEditor](https://github.com/ckeditor/ckeditor-dev) repository.
  2. Inside ckeditor-dev run:
 
     ```
