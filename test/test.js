@@ -368,6 +368,12 @@ CKBuilder.options.debug = 2;
 		}
 	}
 
+    function flatten(arr) {
+        return arr.reduce(function (flat, toFlatten) {
+            return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+        }, []);
+    }
+
 	function listFiles( file )
 	{
 		var result = [];
@@ -423,7 +429,7 @@ CKBuilder.options.debug = 2;
 			'test/tmp/ignored/uicolor/plugin.js'];
 
 		assertEquals( files.length, 3, "Comparing plugins directories (same number of subfolders?)" );
-		var areEqual = files.toString().replace(/\\/g, "/") === validResult.toString();
+		var areEqual = flatten(files).sort().toString().replace(/\\/g, "/") === validResult.sort().toString();
 		assertEquals( true, areEqual, "Comparing plugins directories (are equal?)" );
 	}
 
