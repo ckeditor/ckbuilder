@@ -13,6 +13,7 @@ importClass( com.google.javascript.jscomp.CompilationLevel );
 importClass( com.google.javascript.jscomp.Compiler );
 importClass( com.google.javascript.jscomp.CompilerOptions );
 importClass( com.google.javascript.jscomp.SourceFile );
+importClass( java.nio.charset.StandardCharsets );
 
 ( function() {
 
@@ -34,7 +35,8 @@ importClass( com.google.javascript.jscomp.SourceFile );
 		var options = new CompilerOptions();
 
 		// Otherwise strings in language files are escaped as \u1234 making them larger
-		options.outputCharset = 'UTF-8';
+		options.outputCharset = StandardCharsets.UTF_8;
+		options.languageIn = com.google.javascript.jscomp.CompilerOptions.LanguageMode.ECMASCRIPT5;
 
 		CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel( options );
 
@@ -87,7 +89,8 @@ importClass( com.google.javascript.jscomp.SourceFile );
 			compiler.setLoggingLevel( java.util.logging.Level.OFF );
 
 			var options = new CompilerOptions();
-			options.outputCharset = 'UTF-8';
+			options.outputCharset = StandardCharsets.UTF_8;
+			options.languageIn = com.google.javascript.jscomp.CompilerOptions.LanguageMode.ECMASCRIPT5;
 			CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel( options );
 
 			// To get the complete set of externs, the logic in
@@ -137,7 +140,8 @@ importClass( com.google.javascript.jscomp.SourceFile );
 			);
 
 			// Otherwise strings in language files are escaped as \u1234 making them larger
-			options.outputCharset = 'UTF-8';
+			options.outputCharset = StandardCharsets.UTF_8;
+			options.languageIn = com.google.javascript.jscomp.CompilerOptions.LanguageMode.ECMASCRIPT5;
 			CompilationLevel.WHITESPACE_ONLY.setOptionsForCompilationLevel( options );
 
 				// To get the complete set of externs, the logic in
