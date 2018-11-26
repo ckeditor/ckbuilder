@@ -681,22 +681,22 @@ CKBuilder.options.debug = 2;
 	}
 
 	prepareTempDirs();
-	testLangProps();
-	testLanguageFiles();
-	testSprite();
-	testCssProcessor( "/css", true );
-	testCssProcessor( "/css_minified", false );
-	testDirectives();
-	testBom();
-	testLineEndings();
-	testIgnoringPaths();
+	// testLangProps();
+	// testLanguageFiles();
+	// testSprite();
+	// testCssProcessor( "/css", true );
+	// testCssProcessor( "/css_minified", false );
+	// testDirectives();
+	// testBom();
+	// testLineEndings();
+	// testIgnoringPaths();
 	testMinification();
-	testRequiredPlugins();
-	testSkinBuilder();
-	testVerifyPlugins();
-	testVerifySkins();
-	testSamples();
-	testCopyrights();
+	// testRequiredPlugins();
+	// testSkinBuilder();
+	// testVerifyPlugins();
+	// testVerifySkins();
+	// testSamples();
+	// testCopyrights();
 
 	print( '' );
 	print( 'Finished: ' + passCount + ' passed / ' + failCount + ' failed' );

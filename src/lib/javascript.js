@@ -5,6 +5,7 @@
 
 importClass( java.io.File );
 importClass( java.lang.System );
+importClass( java.lang.StringBuilder );
 importPackage( java.util.regex );
 importClass( java.util.regex.Pattern );
 importClass( java.util.regex.Matcher );
@@ -13,6 +14,10 @@ importClass( com.google.javascript.jscomp.CompilationLevel );
 importClass( com.google.javascript.jscomp.Compiler );
 importClass( com.google.javascript.jscomp.CompilerOptions );
 importClass( com.google.javascript.jscomp.SourceFile );
+
+importClass( com.google.javascript.jscomp.SourceMap );
+importClass( com.google.javascript.jscomp.SourceMap.DetailLevel );
+importClass( com.google.javascript.jscomp.SourceMap.Format );
 
 ( function() {
 
@@ -38,6 +43,7 @@ importClass( com.google.javascript.jscomp.SourceFile );
 
 		CompilationLevel.SIMPLE_OPTIMIZATIONS.setOptionsForCompilationLevel( options );
 
+		print( "Compiling file: " + file.getAbsolutePath() );
 		// This is required in order to compile JS files with JSC_TRAILING_COMMA errors
 		options.setWarningLevel( com.google.javascript.jscomp.DiagnosticGroups.INTERNET_EXPLORER_CHECKS, CKBuilder.options.noIeChecks ? com.google.javascript.jscomp.CheckLevel.OFF : com.google.javascript.jscomp.CheckLevel.WARNING );
 
@@ -51,6 +57,14 @@ importClass( com.google.javascript.jscomp.SourceFile );
 			com.google.javascript.jscomp.CheckLevel.OFF
 		);
 
+		var sourceMapFileName = file.getName() + ".map";
+		// https://github.com/google/closure-compiler/blob/v20150609/test/com/google/debugging/sourcemap/SourceMapTestCase.java
+		// https://github.com/google/closure-compiler/blob/v20150609/test/com/google/javascript/jscomp/SourceMapTest.java
+		// Why this does not work? :S
+		options.setSourceMapOutputPath( file.getAbsolutePath() + ".map" );
+		options.setSourceMapFormat( SourceMap.Format.V3 );
+		options.setSourceMapDetailLevel( SourceMap.DetailLevel.ALL );
+
 		// To get the complete set of externs, the logic in
 		// CompilerRunner.getDefaultExterns() should be used here.
 		var extern = SourceFile.fromCode( "externs.js", "function PACKAGER_RENAME() {}" ),
@@ -62,8 +76,20 @@ importClass( com.google.javascript.jscomp.SourceFile );
 			// compile() returns a Result, but it is not needed here.
 			result = compiler.compile( extern, input, options );
 
-		if ( result.success )
-			return compiler.toSource();
+		if ( result.success ) {
+			var source = compiler.toSource();
+			var sb = new StringBuilder();
+			try {
+				result.sourceMap.validate( true );
+				result.sourceMap.appendTo( sb, sourceMapFileName );
+			}
+			catch (e) {
+				throw("Unexpected exception while generating sourcemaps for " + file.getAbsolutePath() + "\nError: " + e.getMessage());
+			}
+
+			print ( "Sourcemap:\n" + sb.toString());
+			return source;
+		}
 		else
 			throw( "Unable to compile file: " + file.getAbsolutePath() );
 	}
