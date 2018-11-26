@@ -555,7 +555,7 @@ CKBuilder.builder = function( srcDir, dstDir ) {
 		}
 
 		// TODO: sourcemap
-		CKBuilder.io.saveFile( targetFile, CKBuilder.utils.copyright( CKBuilder.options.leaveJsUnminified ? "\r\n" : "\n" ) + CKBuilder.io.readFile( targetFile ), true );
+		// CKBuilder.io.saveFile( targetFile, CKBuilder.utils.copyright( CKBuilder.options.leaveJsUnminified ? "\r\n" : "\n" ) + CKBuilder.io.readFile( targetFile ), true );
 		print( "Created ckeditor.js (" + parseInt( targetFile.length() / 1024, 10 ) + "KB)" );
 	}
 
