@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2014, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2018, CKSource - Frederico Knabben. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -15,6 +15,7 @@ CKBuilder.options.debug = 2;
 	var assetsDir = new File( assetsPath );
 	var tempPath = 'test/tmp';
 	var tempDir = new File( tempPath );
+	var timestampStub = 'G3KH';
 
 	function isArray(o) {
 		return Object.prototype.toString.call(o) === '[object Array]';
@@ -201,8 +202,18 @@ CKBuilder.options.debug = 2;
 
 		var imageFile = new File( tempPath + "/sprite/icons.png" );
 		var cssFile = new File( tempPath + "/sprite/icons.css" );
+		var originalTimestamp = CKBuilder.options.timestamp;
 
-		CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins );
+		CKBuilder.options.timestamp = timestampStub;
+
+		try {
+			CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins );
+		} catch ( e ) {
+			// In any case restore timestamp.
+			CKBuilder.options.timestamp = originalTimestamp;
+			// And rethrow the exception.
+			throw e;
+		}
 
 		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
 			'Checking content of icons.css' );
@@ -244,7 +255,13 @@ CKBuilder.options.debug = 2;
 		var imageFile = new File( tempPath + "/sprite/icons3.png" );
 		var cssFile = new File( tempPath + "/sprite/icons3.css" );
 
-		CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins, true );
+		CKBuilder.options.timestamp = timestampStub;
+		try {
+			CKBuilder.image.createFullSprite( pluginsLocation, skinLocation, imageFile, cssFile, plugins, true );
+		} catch ( e ) {
+			CKBuilder.options.timestamp = originalTimestamp;
+			throw e;
+		}
 
 		assertEquals( CKBuilder.io.readFile( new File( assetsDir, "/sprite/icons3.correct.css" ) ), CKBuilder.io.readFile( cssFile ),
 			'Checking content of icons3.css' );
@@ -351,6 +368,12 @@ CKBuilder.options.debug = 2;
 		}
 	}
 
+    function flatten(arr) {
+        return arr.reduce(function (flat, toFlatten) {
+            return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+        }, []);
+    }
+
 	function listFiles( file )
 	{
 		var result = [];
@@ -406,7 +429,7 @@ CKBuilder.options.debug = 2;
 			'test/tmp/ignored/uicolor/plugin.js'];
 
 		assertEquals( files.length, 3, "Comparing plugins directories (same number of subfolders?)" );
-		var areEqual = files.toString().replace(/\\/g, "/") === validResult.toString();
+		var areEqual = flatten(files).sort().toString().replace(/\\/g, "/") === validResult.sort().toString();
 		assertEquals( true, areEqual, "Comparing plugins directories (are equal?)" );
 	}
 
@@ -510,21 +533,32 @@ CKBuilder.options.debug = 2;
 	{
 		print( "\nTesting skin builder...\n" );
 
+		var originalTimestamp = CKBuilder.options.timestamp;
+
+		// Stub the timestamp.
+		CKBuilder.options.timestamp = timestampStub;
 		CKBuilder.options.leaveCssUnminified = true;
 		var sourceLocation = new File( assetsDir, 'skins/kama' );
 		var correctResultLocation = new File( assetsDir, 'skins/kama_correct' );
 		var targetLocation = new File( tempDir, 'skins/kama' );
 
-		CKBuilder.skin.build( sourceLocation, targetLocation );
-		assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification disabled)' );
+		try {
+			CKBuilder.skin.build( sourceLocation, targetLocation );
+			assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification disabled)' );
 
-		CKBuilder.options.leaveCssUnminified = false;
-		var sourceLocation = new File( assetsDir, 'skins_minified/kama' );
-		var correctResultLocation = new File( assetsDir, 'skins_minified/kama_correct' );
-		var targetLocation = new File( tempDir, 'skins_minified/kama' );
+			CKBuilder.options.leaveCssUnminified = false;
+			var sourceLocation = new File( assetsDir, 'skins_minified/kama' );
+			var correctResultLocation = new File( assetsDir, 'skins_minified/kama_correct' );
+			var targetLocation = new File( tempDir, 'skins_minified/kama' );
 
-		CKBuilder.skin.build( sourceLocation, targetLocation );
-		assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification enabled)' );
+			CKBuilder.skin.build( sourceLocation, targetLocation );
+			assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking skin builder (CSS minification enabled)' );
+		} catch ( e ) {
+			// In any case restore timestamp.
+			CKBuilder.options.timestamp = originalTimestamp;
+			// And rethrow the exception.
+			throw e;
+		}
 	}
 
 	function testVerifyPlugins()
@@ -614,6 +648,38 @@ CKBuilder.options.debug = 2;
 		assertDirectoriesAreEqual( correctResultLocation, targetLocation, 'Checking merged samples' );
 
 	}
+
+	function testCopyrights()
+	{
+		print( "\nTesting copyrights...\n" );
+		CKBuilder.options.commercial = true;
+		CKBuilder.options.leaveJsUnminified = true;
+		var sourceLocation = new File( assetsDir, 'copyrights' );
+		var targetLocation = new File( tempDir, 'copyrights' );
+		CKBuilder.io.copy( sourceLocation, targetLocation );
+
+		var testName, tempFile, correctFile;
+		var dir = new File( tempDir, 'copyrights' );
+		var dirList = dir.list();
+
+		for ( var i = 0 ; i < dirList.length ; i++ )
+		{
+			if ( dirList[i].indexOf( ".correct" ) === -1 )
+				continue;
+
+			testName = dirList[i].replace( ".correct", "" );
+
+			correctFile = new File( dir, testName + '.correct' );
+			tempFile = new File( dir, testName );
+			CKBuilder.tools.updateCopyrights( tempFile );
+
+			assertEquals( CKBuilder.io.readFile( correctFile ), CKBuilder.io.readFile( tempFile ),
+					'copyrights[' + testName + ']' );
+		}
+		CKBuilder.options.commercial = false;
+		CKBuilder.options.leaveJsUnminified = false;
+	}
+
 	prepareTempDirs();
 	testLangProps();
 	testLanguageFiles();
@@ -630,6 +696,7 @@ CKBuilder.options.debug = 2;
 	testVerifyPlugins();
 	testVerifySkins();
 	testSamples();
+	testCopyrights();
 
 	print( '' );
 	print( 'Finished: ' + passCount + ' passed / ' + failCount + ' failed' );

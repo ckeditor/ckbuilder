@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2014, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2018, CKSource - Frederico Knabben. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -98,6 +98,37 @@
 			CKBuilder.io.saveFile( targetFile, regexLib.eof.matcher( buffer.toString() ).replaceAll( lineEndings[ extension ] ) );
 
 			return true;
+		},
+
+		/**
+		 * Updates copyright headers in text files.
+		 *
+		 * @param {java.io.File} targetFile
+		 */
+		updateCopyrights: function( targetFile ) {
+			var extension = CKBuilder.io.getExtension( targetFile.getName() ),
+				bomExtensions = { asp: 1, js: 1 };
+
+			if ( !lineEndings[ extension ] ) {
+				return false;
+			}
+
+			text = CKBuilder.io.readFile( targetFile );
+			if ( text.indexOf( "Copyright" ) === -1 || text.indexOf( "CKSource" ) === -1 ) {
+				return;
+			}
+
+			if ( text.indexOf( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license' ) !== -1 ) {
+				text = text.replace( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
+				return;
+			}
+
+			if ( text.indexOf( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license](https://ckeditor.com/legal/ckeditor-oss-license)' ) !== -1 ) {
+				text = text.replace( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license](https://ckeditor.com/legal/ckeditor-oss-license)', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
+				return;
+			}
 		},
 
 		/**

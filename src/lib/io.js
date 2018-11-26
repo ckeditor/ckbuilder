@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2014, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2018, CKSource - Frederico Knabben. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -394,14 +394,15 @@ importClass( java.util.zip.GZIPInputStream );
 		 * @returns {String}
 		 * @static
 		 */
-		readFiles: function( files ) {
+		readFiles: function( files, separator ) {
 			var i,
 				out = [];
 
-			for ( i = 0; i < files.length; i++ )
+			for ( i = 0; i < files.length; i++ ) {
 				out.push( this.readFile( files[ i ] ) );
+			}
 
-			return out.join( "" );
+			return out.join( separator ? separator : "" );
 		},
 
 		/**

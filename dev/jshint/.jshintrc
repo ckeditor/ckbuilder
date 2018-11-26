@@ -55,7 +55,7 @@
 		"Compiler": false,
 		"CompilerOptions": false,
 		"CompilationLevel": false,
-		"JSSourceFile": false,
+		"SourceFile": false,
 
 		// Apache Commons CLI
 		"HelpFormatter": false,

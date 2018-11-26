@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2014, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2018, CKSource - Frederico Knabben. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -209,7 +209,7 @@ importClass( java.awt.image.BufferedImage );
 				throw( 'Error while generating sprite image: invalid width (' + maxIconWidth + ')' );
 
 			var cssHidpiPrefix = hidpi ? ".cke_hidpi" : "",
-				iconsStrip = hidpi ? "icons_hidpi.png" : "icons.png";
+				iconsStrip = ( hidpi ? "icons_hidpi.png" : "icons.png" ) + "?t=" + CKBuilder.options.timestamp;
 
 			for ( i = 0; i < images.length; i++ ) {
 				var buttonName = images[ i ].fileName.match( /.*?(?=\.|-rtl)/ ),

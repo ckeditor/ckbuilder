@@ -1,4 +1,4 @@
-CKBuilder 2.0.1
+CKBuilder 2.3.2
 
 USAGE: java -jar ckbuilder.jar
 
@@ -25,6 +25,7 @@ SYNOPSIS:
       --core                    create only the core file (ckeditor.js)
       --no-zip                  do not create zip file
       --no-tar                  do not create tar.gz file
+      --commercial              builds a package with commercial license
 
 DESCRIPTION:
   Creates CKEditor build in DST folder using source files from SRC folder.
