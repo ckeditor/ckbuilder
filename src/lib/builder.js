@@ -299,7 +299,7 @@ CKBuilder.builder = function( srcDir, dstDir ) {
 			return;
 		var dirList = pluginsFolder.list();
 		for ( var i = 0; i < dirList.length; i++ ) {
-			if ( !pluginNames[ dirList[ i ] ] ) {
+			if ( !pluginNames[ dirList[ i ] ] && dirList[ i ] != CKBuilder.options.requirePlugin ) {
 				if ( CKBuilder.options.debug > 1 )
 					print( 'Removing unused plugin: ' + dirList[ i ] );
 				CKBuilder.io.deleteDirectory( File( pluginsFolder, dirList[ i ] ) );
