@@ -46,7 +46,7 @@ CKBuilder.Controller = function() {
 		[ null, "commercial", false, "builds a package with commercial license" ],
 		[ null, "name", [ "NAME", "expected name" ], "the expected name of the skin/plugin, used for verification" ],
 		[ "d", "debug-level", [ "LEVEL", "debug level (0, 1, 2)." ], "sets the debug level" ],
-		[ "r", "require-plugin", [ "NAME", "plugin name" ], "target plugin will not be removed from the build even if it isn't used" ]
+		[ "r", "require-plugins", [ "NAME", "plugin names" ], "target plugin will not be removed from the build even if it isn't used" ]
 	];
 
 	/**
@@ -223,8 +223,8 @@ CKBuilder.Controller.prototype = {
 		if ( line.hasOption( "no-tar" ) )
 			CKBuilder.options.noTar = true;
 
-		if ( line.hasOption( "require-plugin" ) )
-			CKBuilder.options.requirePlugin = line.getOptionValue( "require-plugin" );
+		if ( line.hasOption( "require-plugins" ) )
+			CKBuilder.options.requirePlugins = line.getOptionValue( "require-plugins" );
 
 		var foundCommandName = null;
 		for ( var commandName in this.commandsHandlers ) {
