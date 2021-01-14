@@ -45,7 +45,8 @@ CKBuilder.Controller = function() {
 		[ null, "core", false, "build only the core file (ckeditor.js)" ],
 		[ null, "commercial", false, "builds a package with commercial license" ],
 		[ null, "name", [ "NAME", "expected name" ], "the expected name of the skin/plugin, used for verification" ],
-		[ "d", "debug-level", [ "LEVEL", "debug level (0, 1, 2)." ], "sets the debug level" ]
+		[ "d", "debug-level", [ "LEVEL", "debug level (0, 1, 2)." ], "sets the debug level" ],
+		[ "r", "require-plugins", [ "NAMES", "plugin names" ], "target plugins will be added to the output build directory in a minified version (but without their dependencies)" ]
 	];
 
 	/**
@@ -221,6 +222,9 @@ CKBuilder.Controller.prototype = {
 
 		if ( line.hasOption( "no-tar" ) )
 			CKBuilder.options.noTar = true;
+
+		if ( line.hasOption( "require-plugins" ) )
+			CKBuilder.options.requirePlugins = line.getOptionValue( "require-plugins" );
 
 		var foundCommandName = null;
 		for ( var commandName in this.commandsHandlers ) {

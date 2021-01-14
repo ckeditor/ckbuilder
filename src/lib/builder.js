@@ -295,16 +295,39 @@ CKBuilder.builder = function( srcDir, dstDir ) {
 	 */
 	function filterPluginFolders() {
 		var pluginsFolder = new File( targetLocation, 'plugins' );
+
 		if ( !pluginsFolder.exists() )
 			return;
-		var dirList = pluginsFolder.list();
+
+		var requiredPlugins = CKBuilder.options.requirePlugins ? CKBuilder.options.requirePlugins.split( ',' ) : [],
+			dirList = pluginsFolder.list();
+
 		for ( var i = 0; i < dirList.length; i++ ) {
-			if ( !pluginNames[ dirList[ i ] ] ) {
+			if ( !pluginNames[ dirList[ i ] ] && !includes( requiredPlugins, dirList[ i ] ) ) {
 				if ( CKBuilder.options.debug > 1 )
 					print( 'Removing unused plugin: ' + dirList[ i ] );
 				CKBuilder.io.deleteDirectory( File( pluginsFolder, dirList[ i ] ) );
 			}
 		}
+	}
+
+	/**
+	 * Check if an array contains given element.
+	 * Alias for Array.prototype.includes method.
+	 *
+	 * @param {Array} array
+	 * @param {String} element
+	 *
+	 * @returns {Boolean}
+	 */
+	function includes( array, element ) {
+		for ( var i = 0; i < array.length; i++ ) {
+			if ( array[ i ] == element ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
