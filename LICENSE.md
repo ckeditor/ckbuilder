@@ -2,7 +2,7 @@ Software License Agreement
 ==========================
 
 CKBuilder - release builder for CKEditor.
-Copyright (c) 2012-2018, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
 
 Licensed under the terms of the [MIT License](http://en.wikipedia.org/wiki/MIT_License) (see Appendix A).
 
@@ -80,7 +80,7 @@ Appendix A: The MIT License
 
 The MIT License (MIT)
 
-Copyright (c) 2012-2018, CKSource - Frederico Knabben
+Copyright (c) 2012-2021, CKSource - Frederico Knabben
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
