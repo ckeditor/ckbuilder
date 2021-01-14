@@ -46,7 +46,7 @@ CKBuilder.Controller = function() {
 		[ null, "commercial", false, "builds a package with commercial license" ],
 		[ null, "name", [ "NAME", "expected name" ], "the expected name of the skin/plugin, used for verification" ],
 		[ "d", "debug-level", [ "LEVEL", "debug level (0, 1, 2)." ], "sets the debug level" ],
-		[ "r", "require-plugins", [ "NAME", "plugin names" ], "target plugin will not be removed from the build even if it isn't used" ]
+		[ "r", "require-plugins", [ "NAMES", "plugin names" ], "target plugin will be added to the output build directory in minified version" ]
 	];
 
 	/**
