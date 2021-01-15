@@ -251,11 +251,18 @@
 				workingDirObj = CKBuilder.io.prepareWorkingDirectoryIfNeeded( plugin ),
 				workingDir = workingDirObj.directory;
 
+			if ( CKBuilder.options.skipValidation > 1 ) {
+				print( "Skipping JS files validation" );
+				return "OK";
+			}
+
 			if ( CKBuilder.options.debug > 1 )
 				print( "Validating JS files" );
 
-			errors += CKBuilder.tools.validateJavaScriptFiles( workingDir );
-			errors += CKBuilder.tools.validateJavaScriptFilesUsingCC( workingDir );
+			if ( CKBuilder.options.skipValidation < 1 ) {
+				errors += CKBuilder.tools.validateJavaScriptFiles(workingDir);
+				errors += CKBuilder.tools.validateJavaScriptFilesUsingCC(workingDir);
+			}
 
 			if ( !errors ) {
 				var pluginPath = findCorrectPluginFile( workingDir );
