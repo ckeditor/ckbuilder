@@ -30,8 +30,12 @@
 		 * @static
 		 */
 		copyright: function( eol ) {
-			var copyright,
-				date = new Date();
+			var copyright;
+			if(System.env.get('SOURCE_DATE_EPOCH') !== null) {
+				var date = new Date(parseInt(System.getenv("SOURCE_DATE_EPOCH"), 10) * 1000);
+			} else {
+				var date = new Date();
+			}
 
 			if ( CKBuilder.options.commercial )
 				copyright = "/*" + eol + "This software is covered by CKEditor Commercial License. Usage without proper license is prohibited." + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource - Frederico Knabben. All rights reserved." + eol + "*/" + eol;
