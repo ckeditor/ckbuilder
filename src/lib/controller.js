@@ -188,8 +188,8 @@ CKBuilder.Controller.prototype = {
 		if ( line.hasOption( "debug-level" ) )
 			CKBuilder.options.debug = line.getOptionValue( "debug-level" );
 
-		if ( line.hasOption( "skip-validation" ) )
-			CKBuilder.options.skipValidation = line.getOptionValue( "skip-validation" );
+		if ( line.hasOption( "skip-plugin-validation" ) )
+			CKBuilder.options.skipPluginValidation = line.getOptionValue( "skip-plugin-validation" );
 
 		if ( line.hasOption( "overwrite" ) )
 			CKBuilder.options.overwrite = true;
