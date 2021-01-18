@@ -36,6 +36,7 @@ CKBuilder.Controller = function() {
 		[ null, "leave-js-unminified", false, "leave javascript files as is, do not minify them" ],
 		[ null, "leave-css-unminified", false, "leave CSS files as is, do not minify them" ],
 		[ "s", "skip-omitted-in-build-config", false, "exclude from release all plugins/skins that are not specified in build-config" ],
+		[ null, "skip-plugin-validation", [ "LEVEL", "skip validation level (0, 1, 2)." ], "sets the skip plugin validation level (this works only for preprocess-plugin command)." ],
 		[ null, "revision", [ "NUMBER", "revision number" ], "revision number" ],
 		[ null, "version", [ "NUMBER", "version number" ], "version number" ],
 		[ null, "overwrite", false, "overwrite target folder if exists" ],
@@ -186,6 +187,9 @@ CKBuilder.Controller.prototype = {
 		// Options
 		if ( line.hasOption( "debug-level" ) )
 			CKBuilder.options.debug = line.getOptionValue( "debug-level" );
+
+		if ( line.hasOption( "skip-plugin-validation" ) )
+			CKBuilder.options.skipPluginValidation = line.getOptionValue( "skip-plugin-validation" );
 
 		if ( line.hasOption( "overwrite" ) )
 			CKBuilder.options.overwrite = true;
