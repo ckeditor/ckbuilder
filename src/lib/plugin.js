@@ -251,7 +251,7 @@
 				workingDirObj = CKBuilder.io.prepareWorkingDirectoryIfNeeded( plugin ),
 				workingDir = workingDirObj.directory;
 
-			if ( CKBuilder.options.skipValidation > 1 ) {
+			if ( CKBuilder.options.skipPluginValidation > 1 ) {
 				print( "Skipping JS files validation" );
 				return "OK";
 			}
@@ -259,7 +259,7 @@
 			if ( CKBuilder.options.debug > 1 )
 				print( "Validating JS files" );
 
-			if ( CKBuilder.options.skipValidation < 1 ) {
+			if ( CKBuilder.options.skipPluginValidation < 1 ) {
 				errors += CKBuilder.tools.validateJavaScriptFiles(workingDir);
 				errors += CKBuilder.tools.validateJavaScriptFilesUsingCC(workingDir);
 			}

@@ -48,7 +48,7 @@ this.CKBuilder = ( function() {
 			version : 'DEV',
 			revision : 0,
 			timestamp : timestamp,
-			skipValidation: 0
+			skipPluginValidation: 0
 		},
 		error : function( msg ) {
 			print( 'ERROR:' );
