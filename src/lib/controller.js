@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2022, CKSource Holding sp. z o.o. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -172,7 +172,7 @@ CKBuilder.Controller.prototype = {
 			for ( i = 0; i < types.length; i++ )
 				print( "\n" + CKBuilder.io.readFile( new File( "src/assets/" + types[ i ] ) ) );
 		}
-		print( "Copyright (c) 2003-" + date.getFullYear() + ", CKSource - Frederico Knabben" );
+		print( "Copyright (c) 2003-" + date.getFullYear() + ", CKSource Holding sp. z o.o." );
 	},
 
 	/**

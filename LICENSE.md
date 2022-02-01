@@ -2,7 +2,7 @@ Software License Agreement
 ==========================
 
 CKBuilder - release builder for CKEditor.
-Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2012-2022, CKSource Holding sp. z o.o. All rights reserved.
 
 Licensed under the terms of the [MIT License](http://en.wikipedia.org/wiki/MIT_License) (see Appendix A).
 
@@ -69,7 +69,7 @@ License: YUI Compressor Copyright License Agreement (revised BSD License)
 Trademarks
 ----------
 
-CKBuilder and CKEditor are trademarks of CKSource - Frederico Knabben. All other
+CKBuilder and CKEditor are trademarks of CKSource Holding sp. z o.o. All other
 brand and product names are trademarks, registered trademarks or service
 marks of their respective holders.
 
@@ -80,7 +80,7 @@ Appendix A: The MIT License
 
 The MIT License (MIT)
 
-Copyright (c) 2012-2021, CKSource - Frederico Knabben
+Copyright (c) 2012-2022, CKSource Holding sp. z o.o
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

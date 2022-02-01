@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2022, CKSource Holding sp. z o.o. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -34,9 +34,9 @@
 				date = new Date();
 
 			if ( CKBuilder.options.commercial )
-				copyright = "/*" + eol + "This software is covered by CKEditor Commercial License. Usage without proper license is prohibited." + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource - Frederico Knabben. All rights reserved." + eol + "*/" + eol;
+				copyright = "/*" + eol + "This software is covered by CKEditor Commercial License. Usage without proper license is prohibited." + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource Holding sp. z o.o. All rights reserved." + eol + "*/" + eol;
 			else
-				copyright = "/*" + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource - Frederico Knabben. All rights reserved." + eol + "For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license" + eol + "*/" + eol;
+				copyright = "/*" + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource Holding sp. z o.o. All rights reserved." + eol + "For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license" + eol + "*/" + eol;
 
 				return copyright;
 		},
