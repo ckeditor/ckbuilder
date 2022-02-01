@@ -4,7 +4,7 @@ Software License Agreement
 CKBuilder - release builder for CKEditor.
 Copyright (c) 2012-2022, CKSource Holding sp. z o.o. All rights reserved.
 
-Licensed under the terms of the [MIT License](http://en.wikipedia.org/wiki/MIT_License) (see Appendix A).
+Licensed under the terms of the [MIT License](https://en.wikipedia.org/wiki/MIT_License) (see Appendix A).
 
 Sources of Intellectual Property Included in CKBuilder
 -----------------------------------------------------

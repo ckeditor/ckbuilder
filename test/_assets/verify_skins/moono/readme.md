@@ -4,7 +4,7 @@
 The Kama skin is currently the default skin of CKEditor. It is the one included on the standard CKEditor distributions. It is actively maintained by the CKEditor core developers.
 
 For in-depth information about skins, please check the "CKEditor Skin SDK" documentation:
-http://docs.cksource.com/CKEditor_4.x/Skin_SDK
+https://docs.cksource.com/CKEditor_4.x/Skin_SDK
 
 Directory Structure
 -------------------
@@ -21,6 +21,6 @@ License
 
 Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
 
-Licensed under the terms of any of the following licenses at your choice: [GPL](http://www.gnu.org/licenses/gpl.html), [LGPL](http://www.gnu.org/licenses/lgpl.html) and [MPL](http://www.mozilla.org/MPL/MPL-1.1.html).
+Licensed under the terms of any of the following licenses at your choice: [GPL](https://www.gnu.org/licenses/gpl.html), [LGPL](https://www.gnu.org/licenses/lgpl.html) and [MPL](https://www.mozilla.org/MPL/MPL-1.1.html).
 
 See LICENSE.md for more information.

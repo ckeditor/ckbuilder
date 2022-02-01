@@ -3,7 +3,7 @@
 
 @echo Off
 
-:: http://www.jshint.com/platforms/
+:: https://www.jshint.com/platforms/
 :: To run the script install node and jshint:
 :: npm install jshint -g
 

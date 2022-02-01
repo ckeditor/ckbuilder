@@ -43,7 +43,7 @@
 				//	 2xx : Success
 				//	 304 : Not Modified
 				//	   0 : Returned when running locally (file://)
-				//	1223 : IE may change 204 to 1223 (see http://dev.jquery.com/ticket/1450)
+				//	1223 : IE may change 204 to 1223 (see https://dev.jquery.com/ticket/1450)
 
 				return ( xhr.readyState == 4 && ( ( xhr.status >= 200 && xhr.status < 300 ) || xhr.status == 304 || xhr.status === 0 || xhr.status == 1223 ) );
 			};

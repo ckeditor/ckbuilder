@@ -1,9 +1,9 @@
 /*
  * cssmin.js
- * Author: Stoyan Stefanov - http://phpied.com/
+ * Author: Stoyan Stefanov - https://phpied.com/
  * This is a JavaScript port of the CSS minification tool
  * distributed with YUICompressor, itself a port
- * of the cssmin utility by Isaac Schlueter - http://foohack.com/
+ * of the cssmin utility by Isaac Schlueter - https://foohack.com/
  * Permission is hereby granted to use the JavaScript version under the same
  * conditions as the YUICompressor (original YUICompressor note below).
  */
@@ -12,8 +12,8 @@
 
 /**
  * YUI Compressor
- * http://developer.yahoo.com/yui/compressor/
- * Author: Julien Lecomte - http://www.julienlecomte.net/
+ * https://developer.yahoo.com/yui/compressor/
+ * Author: Julien Lecomte - https://www.julienlecomte.net/
  * Copyright (c) 2011 Yahoo! Inc. All rights reserved.
  * The copyrights embodied in the content of this file are licensed
  * by Yahoo! Inc. under the BSD (revised) open source license.
