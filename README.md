@@ -56,7 +56,7 @@ Build CKEditor, definitely the most frequently used command.
 
 Creates a release version of a skin (icons are merged into a single strip image, CSS files are merged and minified, JavaScript files are minified). 
 
-Note: if you want to share your skin with others, do **not** upload the release version of a skin to the [CKEditor addons repository](https://ckeditor.com/addons/skins/all), upload the source version instead.
+Note: if you want to share your skin with others, do **not** upload the release version of a skin to the [CKEditor addons repository](https://ckeditor.com/cke4/addons/skins/all), upload the source version instead.
 
 **--verify-plugin | --verify-skin**
 
@@ -64,7 +64,7 @@ Used by the online builder to verify if a plugin or skin is valid. If you have p
 
 **--preprocess-core | --preprocess-plugin | --preprocess-skin**
 
-Used by the [online builder](https://ckeditor.com/builder), unless you intend to do a similar service, you don't need it.
+Used by the [online builder](https://ckeditor.com/cke4/builder), unless you intend to do a similar service, you don't need it.
 
 **--generate-build-config**
 
