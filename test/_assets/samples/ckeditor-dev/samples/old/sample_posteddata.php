@@ -10,7 +10,7 @@
   side and write it to a file or the database.
 
   Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
-  For licensing, see LICENSE.html or <a href="https://ckeditor.com/legal/ckeditor-oss-license">https://ckeditor.com/legal/ckeditor-oss-license</a>
+  For licensing, see LICENSE.html or <a href="https://ckeditor.com/legal/ckeditor-oss-license/">https://ckeditor.com/legal/ckeditor-oss-license/</a>
 -------------------------------------------------------------------------------------------
 
 </pre><div style="display:none"></body> */ include "assets/posteddata.php"; ?>

@@ -118,14 +118,14 @@
 				return;
 			}
 
-			if ( text.indexOf( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license' ) !== -1 ) {
-				text = text.replace( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+			if ( text.indexOf( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license/' ) !== -1 ) {
+				text = text.replace( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license/', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
 				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
 				return;
 			}
 
-			if ( text.indexOf( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license](https://ckeditor.com/legal/ckeditor-oss-license)' ) !== -1 ) {
-				text = text.replace( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license](https://ckeditor.com/legal/ckeditor-oss-license)', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+			if ( text.indexOf( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license/](https://ckeditor.com/legal/ckeditor-oss-license/)' ) !== -1 ) {
+				text = text.replace( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license/](https://ckeditor.com/legal/ckeditor-oss-license/)', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
 				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
 				return;
 			}
