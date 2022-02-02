@@ -3,8 +3,8 @@
 
 The Kama skin is currently the default skin of CKEditor. It is the one included on the standard CKEditor distributions. It is actively maintained by the CKEditor core developers.
 
-For in-depth information about skins, please check the "CKEditor Skin SDK" documentation:
-https://docs.cksource.com/CKEditor_4.x/Skin_SDK
+For in-depth information about skins, please check the "CKEditor Skin API" documentation:
+https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_skin.html
 
 Directory Structure
 -------------------

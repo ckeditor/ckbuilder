@@ -25,7 +25,7 @@ CKEDITOR.plugins.add( 'devtools',
 	function defaultCallback( editor, dialog, element, tabName )
 	{
 		var lang = editor.lang.devTools,
-			link = '<a href="https://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.definition.' +
+			link = '<a href="https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dialog_definition_' +
 					( element ? ( element.type == 'text' ? 'textInput' : element.type ) : 'content' ) +
 					'.html" target="_blank">' + ( element ? element.type : 'content' ) + '</a>',
 			str =
@@ -139,7 +139,7 @@ CKEDITOR.plugins.add( 'devtools',
  * config.devtools_textCallback = function( editor, dialog, element, tabName )
  * {
  * 	var lang = editor.lang.devTools,
- * 		link = '<a href="https://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.definition.' +
+ * 		link = '<a href="https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dialog_definition_' +
  * 				( element ? ( element.type == 'text' ? 'textInput' : element.type ) : 'content' ) +
  * 				'.html" target="_blank">' + ( element ? element.type : 'content' ) + '</a>',
  * 		str =
