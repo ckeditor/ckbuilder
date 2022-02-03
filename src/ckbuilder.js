@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2022, CKSource Holding sp. z o.o. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -12,7 +12,7 @@ importClass( java.lang.Integer );
  *
  * Check out [official java.io.File documentation][1]  for more.
  *
- * [1]: http://docs.oracle.com/javase/7/docs/api/java/io/File.html
+ * [1]: https://docs.oracle.com/javase/7/docs/api/java/io/File.html
  */
 
 /**
@@ -20,7 +20,7 @@ importClass( java.lang.Integer );
  *
  * Check out [official java.io.File documentation][1]  for more.
  *
- * [1]: http://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html
+ * [1]: https://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html
  */
 
 /**

@@ -1,6 +1,6 @@
 ﻿/*
-Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license
+Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license/
 */
 
 CKEDITOR.dialog.add( 'link', function( editor )
@@ -439,11 +439,11 @@ CKEDITOR.dialog.add( 'link', function( editor )
 										id : 'protocol',
 										type : 'select',
 										label : commonLang.protocol,
-										'default' : 'http://',
+										'default' : 'https://',
 										items :
 										[
 											// Force 'ltr' for protocol names in BIDI. (#5433)
-											[ 'http://\u200E', 'http://' ],
+											[ 'https://\u200E', 'https://' ],
 											[ 'https://\u200E', 'https://' ],
 											[ 'ftp://\u200E', 'ftp://' ],
 											[ 'news://\u200E', 'news://' ],
@@ -1198,7 +1198,7 @@ CKEDITOR.dialog.add( 'link', function( editor )
 			switch ( data.type || 'url' )
 			{
 				case 'url':
-					var protocol = ( data.url && data.url.protocol != undefined ) ? data.url.protocol : 'http://',
+					var protocol = ( data.url && data.url.protocol != undefined ) ? data.url.protocol : 'https://',
 						url = ( data.url && CKEDITOR.tools.trim( data.url.url ) ) || '';
 					attributes[ 'data-cke-saved-href' ] = ( url.indexOf( '/' ) === 0 ) ? url : protocol + url;
 					break;

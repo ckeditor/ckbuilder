@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2022, CKSource Holding sp. z o.o. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -442,7 +442,7 @@ importClass( java.util.zip.GZIPInputStream );
 				inStream.close();
 			}
 
-			/* http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4508058 */
+			/* https://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4508058 */
 			if ( buffer.length() && buffer.charAt( 0 ) === 65279 )
 				buffer.deleteCharAt( 0 );
 
@@ -482,7 +482,7 @@ importClass( java.util.zip.GZIPInputStream );
 				inStream.close();
 			}
 
-			/* http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4508058 */
+			/* https://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4508058 */
 			if ( buffer.length() && buffer.charAt( 0 ) === 65279 )
 				buffer.deleteCharAt( 0 );
 

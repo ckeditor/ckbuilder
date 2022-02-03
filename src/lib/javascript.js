@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
+ Copyright (c) 2012-2022, CKSource Holding sp. z o.o. All rights reserved.
  For licensing, see LICENSE.md
  */
 
@@ -20,7 +20,7 @@ importClass( com.google.javascript.jscomp.SourceFile );
 	 * Compile JavaScript file.
 	 *
 	 * @param {java.io.File} file
-	 * http://closure-compiler.googlecode.com/svn/trunk/javadoc/index.html
+	 * https://closure-compiler.googlecode.com/svn/trunk/javadoc/index.html
 	 * @member CKBuilder.javascript
 	 * @private
 	 * @returns {String}
@@ -29,8 +29,8 @@ importClass( com.google.javascript.jscomp.SourceFile );
 		var compiler = new Compiler();
 		compiler.setLoggingLevel( java.util.logging.Level.WARNING );
 
-		// http://closure-compiler.googlecode.com/svn/trunk/javadoc/index.html
-		// http://closure-compiler.googlecode.com/svn/trunk/javadoc/com/google/javascript/jscomp/CompilerOptions.html
+		// https://closure-compiler.googlecode.com/svn/trunk/javadoc/index.html
+		// https://closure-compiler.googlecode.com/svn/trunk/javadoc/com/google/javascript/jscomp/CompilerOptions.html
 		var options = new CompilerOptions();
 
 		// Otherwise strings in language files are escaped as \u1234 making them larger

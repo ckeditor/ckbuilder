@@ -5,7 +5,7 @@
 The [Closure Compiler](https://developers.google.com/closure/compiler/) is a tool for making JavaScript download and run faster. It is a true compiler for JavaScript. Instead of compiling from a source language to machine code, it compiles from JavaScript to better JavaScript. It parses your JavaScript, analyzes it, removes dead code and rewrites and minimizes what's left. It also checks syntax, variable references, and types, and warns about common JavaScript pitfalls.
 
 ## Getting Started
- * [Download the latest version](http://dl.google.com/closure-compiler/compiler-latest.zip) ([Release details here](https://github.com/google/closure-compiler/wiki/Releases))
+ * [Download the latest version](https://dl.google.com/closure-compiler/compiler-latest.zip) ([Release details here](https://github.com/google/closure-compiler/wiki/Releases))
  * [Download a specific version](https://github.com/google/closure-compiler/wiki/Binary-Downloads). Also available via:
    - [Maven](https://github.com/google/closure-compiler/wiki/Maven)
    - [NPM](https://www.npmjs.com/package/google-closure-compiler)
@@ -13,16 +13,16 @@ The [Closure Compiler](https://developers.google.com/closure/compiler/) is a too
 
 ## Options for Getting Help
 1. Post in the [Closure Compiler Discuss Group](https://groups.google.com/forum/#!forum/closure-compiler-discuss)
-2. Ask a question on [Stack Overflow](http://stackoverflow.com/questions/tagged/google-closure-compiler)
+2. Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/google-closure-compiler)
 3. Consult the [FAQ](https://github.com/google/closure-compiler/wiki/FAQ)
 
 ## Building it Yourself
 
-Note: The Closure Compiler requires [Java 7 or higher](http://www.java.com/).
+Note: The Closure Compiler requires [Java 7 or higher](https://www.java.com/).
 
-### Using [Ant](http://ant.apache.org/)
+### Using [Ant](https://ant.apache.org/)
 
-1. Download the [Ant build tool](http://ant.apache.org/bindownload.cgi).
+1. Download the [Ant build tool](https://ant.apache.org/bindownload.cgi).
 
 2. At the root of the source tree, there is an Ant file named ```build.xml```.
    To use it, navigate to the same directory and type the command
@@ -33,9 +33,9 @@ Note: The Closure Compiler requires [Java 7 or higher](http://www.java.com/).
 
     This will produce a jar file called ```build/compiler.jar```.
 
-### Using [Eclipse](http://www.eclipse.org/)
+### Using [Eclipse](https://www.eclipse.org/)
 
-1. Download and open the [Eclipse IDE](http://www.eclipse.org/).
+1. Download and open the [Eclipse IDE](https://www.eclipse.org/).
 2. Navigate to ```File > New > Project ...``` and create a Java Project. Give
    the project a name.
 3. Select ```Create project from existing source``` and choose the root of the
@@ -74,7 +74,7 @@ java -jar compiler.jar --help
 ```
 
 More detailed information about running the Closure Compiler is available in the
-[documentation](http://code.google.com/closure/compiler/docs/gettingstarted_app.html).
+[documentation](https://code.google.com/closure/compiler/docs/gettingstarted_app.html).
 
 ## Compiling Multiple Scripts
 
@@ -110,7 +110,7 @@ will re-order the inputs automatically.
 1. First make sure that it is really a bug and not simply the way that Closure Compiler works (especially true for ADVANCED_OPTIMIZATIONS).
  * Check the [official documentation](https://developers.google.com/closure/compiler/)
  * Consult the [FAQ](https://github.com/google/closure-compiler/wiki/FAQ)
- * Search on [Stack Overflow](http://stackoverflow.com/questions/tagged/google-closure-compiler) and in the [Closure Compiler Discuss Group](https://groups.google.com/forum/#!forum/closure-compiler-discuss)
+ * Search on [Stack Overflow](https://stackoverflow.com/questions/tagged/google-closure-compiler) and in the [Closure Compiler Discuss Group](https://groups.google.com/forum/#!forum/closure-compiler-discuss)
 2. If you still think you have found a bug, make sure someone hasn't already reported it. See the list of [known issues](https://github.com/google/closure-compiler/issues).
 3. If it hasn't been reported yet, post a new issue. Make sure to add enough detail so that the bug can be recreated. The smaller the reproduction code, the better.
 
@@ -126,9 +126,9 @@ will re-order the inputs automatically.
    and that you give us permission to use that code in Closure Compiler.
    You maintain the copyright on that code.
    If you own all the rights to your code, you can fill out an
-   [individual CLA](http://code.google.com/legal/individual-cla-v1.0.html).
+   [individual CLA](https://code.google.com/legal/individual-cla-v1.0.html).
    If your employer has any rights to your code, then they also need to fill out
-   a [corporate CLA](http://code.google.com/legal/corporate-cla-v1.0.html).
+   a [corporate CLA](https://code.google.com/legal/corporate-cla-v1.0.html).
    If you don't know if your employer has any rights to your code, you should
    ask before signing anything.
    By default, anyone with an @google.com email address already has a CLA
@@ -144,7 +144,7 @@ Copyright 2009 The Closure Compiler Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
-You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
+You may obtain a copy of the License at https://www.apache.org/licenses/LICENSE-2.0.
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -166,7 +166,7 @@ limitations under the License.
 
   <tr>
     <td>URL</td>
-    <td>http://www.mozilla.org/rhino</td>
+    <td>https://www.mozilla.org/rhino</td>
   </tr>
 
   <tr>
@@ -274,7 +274,7 @@ options/arguments in your CUI application.</td>
 
   <tr>
     <td>URL</td>
-    <td>http://code.google.com/p/jsr-305/</td>
+    <td>https://code.google.com/p/jsr-305/</td>
   </tr>
 
   <tr>
@@ -308,7 +308,7 @@ options/arguments in your CUI application.</td>
 
   <tr>
     <td>URL</td>
-    <td>http://sourceforge.net/projects/junit/</td>
+    <td>https://sourceforge.net/projects/junit/</td>
   </tr>
 
   <tr>
@@ -342,7 +342,7 @@ options/arguments in your CUI application.</td>
 
   <tr>
     <td>URL</td>
-    <td>http://code.google.com/p/protobuf/</td>
+    <td>https://code.google.com/p/protobuf/</td>
   </tr>
 
   <tr>
@@ -413,7 +413,7 @@ an encoding of structured data.</td>
 
   <tr>
     <td>URL</td>
-    <td>http://ant.apache.org/bindownload.cgi</td>
+    <td>https://ant.apache.org/bindownload.cgi</td>
   </tr>
 
   <tr>

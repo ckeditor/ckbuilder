@@ -1,6 +1,6 @@
 /*
-Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license
+Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license/
 */
 
 /*
@@ -19,8 +19,8 @@ editors:
 	* .cke_reset_all: Intended to reset not only the element holding it, but
 	   also its child elements.
 
-To understand why "reset" is needed, check the CKEditor Skin SDK:
-http://docs.cksource.com/CKEditor_4.x/Skin_SDK/Reset
+To understand why "reset" is needed, check the Reset and External CSS:
+https://ckeditor.com/docs/ckeditor4/latest/guide/skin_sdk_reset.html
 */
 
 /* Reset for single elements, not their children. */

@@ -8,7 +8,7 @@ CKBuilder generates release packages of CKEditor out of its source code.
 ### Compiling CKBuilder
 
 You can compile CKBuilder into a single .jar file by running `build_jar.sh` located in the `dev\build` folder. The compiled file will be generated in the `bin` folder.
-[Apache Ant](http://ant.apache.org) is required to run it.
+[Apache Ant](https://ant.apache.org) is required to run it.
 
 ### Using CKBuilder source files
 
@@ -32,7 +32,7 @@ If you did not compile your own version of `ckbuilder.jar` and all you want to d
 
 **Note:** CKBuilder which is run by calling ```build.sh``` script will use default ```build-config.js``` which define skin, files to be ignored and plugins. For more information about build-config run builder with ```--build-help``` command.
  
-**Note2:** The shell script is designed to run on Mac/Linux. If you are a Windows user, install [Git for Windows](http://msysgit.github.io/), make sure "Git Bash" is checked during the installation process and then run this script using "Git Bash".
+**Note2:** The shell script is designed to run on Mac/Linux. If you are a Windows user, install [Git for Windows](https://msysgit.github.io/), make sure "Git Bash" is checked during the installation process and then run this script using "Git Bash".
 
 ### Using a custom ckbuilder.jar
 
@@ -56,7 +56,7 @@ Build CKEditor, definitely the most frequently used command.
 
 Creates a release version of a skin (icons are merged into a single strip image, CSS files are merged and minified, JavaScript files are minified). 
 
-Note: if you want to share your skin with others, do **not** upload the release version of a skin to the [CKEditor addons repository](http://ckeditor.com/addons/skins/all), upload the source version instead.
+Note: if you want to share your skin with others, do **not** upload the release version of a skin to the [CKEditor addons repository](https://ckeditor.com/cke4/addons/skins/all), upload the source version instead.
 
 **--verify-plugin | --verify-skin**
 
@@ -64,7 +64,7 @@ Used by the online builder to verify if a plugin or skin is valid. If you have p
 
 **--preprocess-core | --preprocess-plugin | --preprocess-skin**
 
-Used by the [online builder](http://ckeditor.com/builder), unless you intend to do a similar service, you don't need it.
+Used by the [online builder](https://ckeditor.com/cke4/builder), unless you intend to do a similar service, you don't need it.
 
 **--generate-build-config**
 

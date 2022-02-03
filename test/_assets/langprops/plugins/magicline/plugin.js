@@ -1,6 +1,6 @@
 ﻿/**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license
+ * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license/
  */
 
 /**
@@ -263,7 +263,7 @@
 
 			// Google Chrome doesn't trigger this on the scrollbar (since 2009...)
 			// so it is totally useless to check for scroll finish
-			// see: http://code.google.com/p/chromium/issues/detail?id=14204
+			// see: https://code.google.com/p/chromium/issues/detail?id=14204
 			editable.attachListener( win, 'mouseup', function( event ) {
 				that.hiddenMode = 0;
 				that.debug.showHidden( that.hiddenMode ); // %REMOVE_LINE%

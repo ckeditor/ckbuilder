@@ -1,9 +1,9 @@
-:: Copyright (c) 2012-2021, CKSource - Frederico Knabben. All rights reserved.
+:: Copyright (c) 2012-2022, CKSource Holding sp. z o.o.. All rights reserved.
 :: For licensing, see LICENSE.md
 
 @echo Off
 
-:: http://www.jshint.com/platforms/
+:: https://www.jshint.com/platforms/
 :: To run the script install node and jshint:
 :: npm install jshint -g
 

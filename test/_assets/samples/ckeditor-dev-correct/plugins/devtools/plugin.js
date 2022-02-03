@@ -1,6 +1,6 @@
 ﻿/**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license
+ * @license Copyright (c) 2003-2022, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.html or https://ckeditor.com/legal/ckeditor-oss-license/
  */
 
 CKEDITOR.plugins.add( 'devtools', {
@@ -19,7 +19,7 @@ CKEDITOR.plugins.add( 'devtools', {
 (function() {
 	function defaultCallback( editor, dialog, element, tabName ) {
 		var lang = editor.lang.devtools,
-			link = '<a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.definition.' +
+			link = '<a href="https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dialog_definition_' +
 			( element ? ( element.type == 'text' ? 'textInput' : element.type ) : 'content' ) +
 			'.html" target="_blank">' + ( element ? element.type : 'content' ) + '</a>',
 			str = '<h2>' + lang.title + '</h2>' +
@@ -117,7 +117,7 @@ CKEDITOR.plugins.add( 'devtools', {
  *		// Show dialog window name, tab ID, and element ID.
  *		config.devtools_textCallback = function( editor, dialog, element, tabName ) {
  *			var lang = editor.lang.devtools,
- *				link = '<a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.dialog.definition.' +
+ *				link = '<a href="https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dialog_definition_' +
  *					( element ? ( element.type == 'text' ? 'textInput' : element.type ) : 'content' ) +
  *					'.html" target="_blank">' + ( element ? element.type : 'content' ) + '</a>',
  *				str =
