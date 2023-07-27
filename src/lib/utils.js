@@ -33,7 +33,9 @@
 			var copyright,
 				date = new Date();
 
-			if ( CKBuilder.options.commercial )
+			if ( CKBuilder.options.lts )
+				copyright = "/*" + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource Holding sp. z o.o. All rights reserved." + eol + "CKEditor 4 LTS (\"Long Term Support\") is available under the terms of the Extended Support Model." + eol + "*/" + eol;
+			else if ( CKBuilder.options.commercial )
 				copyright = "/*" + eol + "This software is covered by CKEditor Commercial License. Usage without proper license is prohibited." + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource Holding sp. z o.o. All rights reserved." + eol + "*/" + eol;
 			else
 				copyright = "/*" + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource Holding sp. z o.o. All rights reserved." + eol + "For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license/" + eol + "*/" + eol;

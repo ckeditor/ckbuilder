@@ -35,6 +35,7 @@ CKBuilder.Controller = function() {
 		[ null, "build-config", [ "FILE", "path to the file" ], "path to the build configuration" ],
 		[ null, "leave-js-unminified", false, "leave javascript files as is, do not minify them" ],
 		[ null, "leave-css-unminified", false, "leave CSS files as is, do not minify them" ],
+		[ null, "lts", false, "builds a package with Extended Support Model license" ],
 		[ "s", "skip-omitted-in-build-config", false, "exclude from release all plugins/skins that are not specified in build-config" ],
 		[ null, "skip-plugin-validation", [ "LEVEL", "skip validation level (0, 1, 2)." ], "sets the skip plugin validation level (this works only for preprocess-plugin command)." ],
 		[ null, "revision", [ "NUMBER", "revision number" ], "revision number" ],
@@ -208,6 +209,9 @@ CKBuilder.Controller.prototype = {
 
 		if ( line.hasOption( "commercial" ) )
 			CKBuilder.options.commercial = true;
+
+		if ( line.hasOption( "lts" ) )
+			CKBuilder.options.lts = true;
 
 		if ( line.hasOption( "revision" ) )
 			CKBuilder.options.revision = line.getOptionValue( "revision" );
