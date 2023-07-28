@@ -25,6 +25,7 @@ SYNOPSIS:
       --no-zip                  do not create zip file
       --no-tar                  do not create tar.gz file
       --commercial              builds a package with commercial license
+      --lts                     builds a package with Extended Support Model license
 
 DESCRIPTION:
   Creates CKEditor build in DST folder using source files from SRC folder.
