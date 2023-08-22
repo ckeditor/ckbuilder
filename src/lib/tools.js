@@ -107,8 +107,19 @@
 		 */
 		updateCopyrights: function( targetFile ) {
 			var extension = CKBuilder.io.getExtension( targetFile.getName() ),
-				bomExtensions = { asp: 1, js: 1 };
+				bomExtensions = { asp: 1, js: 1 },
+				copyright;
 
+			if ( CKBuilder.options.lts ) {
+				copyright = 'CKEditor 4 LTS ("Long Term Support") is available under the terms of the Extended Support Model.';
+			} else if ( CKBuilder.options.commercial ) {
+				copyright = 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.';
+			} else {
+				// Copyright only needs to be updated for LTS or commercial license.
+				return;
+			}
+
+			// `lineEndings` array includes all filetypes supported by CKEditor 4.
 			if ( !lineEndings[ extension ] ) {
 				return false;
 			}
@@ -119,13 +130,13 @@
 			}
 
 			if ( text.indexOf( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license/' ) !== -1 ) {
-				text = text.replace( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license/', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+				text = text.replace( 'For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license/', copyright );
 				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
 				return;
 			}
 
 			if ( text.indexOf( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license/](https://ckeditor.com/legal/ckeditor-oss-license/)' ) !== -1 ) {
-				text = text.replace( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license/](https://ckeditor.com/legal/ckeditor-oss-license/)', 'This software is covered by CKEditor Commercial License. Usage without proper license is prohibited.' );
+				text = text.replace( 'For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license/](https://ckeditor.com/legal/ckeditor-oss-license/)', copyright );
 				CKBuilder.io.saveFile( targetFile, text, bomExtensions[ extension ] );
 				return;
 			}
