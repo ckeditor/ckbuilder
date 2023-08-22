@@ -17,7 +17,7 @@
 	</target>
 
 	<target name="compile" depends="init" description="compile js">
-		<!-- ckbuilder -->
+		<!-- CKBuilder -->
 		<java fork="yes" classname="org.mozilla.javascript.tools.jsc.Main" failonerror="true">
 			<arg value="-debug" />
 			<arg value="-package" />
@@ -63,10 +63,10 @@
 
 	<!--
 	During compilation if -package option is used, file is located automatically in a subdirectory based on the package name,
-	that's why for example we have anther tools/json subdirectory inside ot tools/json directory.
+	that's why for example we have another tools/json subdirectory inside ot tools/json directory.
 	 -->
 	<target name="copy" depends="compile" description="copy files">
-		<!-- ckbuilder -->
+		<!-- CKBuilder -->
 		<copy file="${source.dir}/ckbuilder/ckbuilder.class" tofile="${build.dir}/ckbuilder/ckbuilder.class" overwrite="true" />
 		<copy todir="${build.dir}/ckbuilder">
 			<fileset dir="${source.dir}/lib/ckbuilder" />
