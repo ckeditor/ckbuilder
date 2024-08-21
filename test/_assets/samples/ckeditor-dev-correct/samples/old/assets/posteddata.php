@@ -52,7 +52,7 @@ foreach ( $postArray as $sForm => $value )
 			CKEditor - The text editor for the Internet - <a class="samples" href="https://ckeditorr.com/">https://ckeditor.com</a>
 		</p>
 		<p id="copy">
-			Copyright &copy; 2003-2022, <a class="samples" href="https://cksource.com/">CKSource</a> Holding sp. z o.o. All rights reserved.
+			Copyright &copy; 2003-2024, <a class="samples" href="https://cksource.com/">CKSource</a> Holding sp. z o.o. All rights reserved.
 		</p>
 	</div>
 </body>
