@@ -30,8 +30,12 @@
 		 * @static
 		 */
 		copyright: function( eol ) {
-			var copyright,
-				date = new Date();
+			var copyright;
+			if(System.env.get('SOURCE_DATE_EPOCH') !== null) {
+				var date = new Date(parseInt(System.getenv("SOURCE_DATE_EPOCH"), 10) * 1000);
+			} else {
+				var date = new Date();
+			}
 
 			if ( CKBuilder.options.lts )
 				copyright = "/*" + eol + "Copyright (c) 2003-" + date.getFullYear() + ", CKSource Holding sp. z o.o. All rights reserved." + eol + "CKEditor 4 LTS (\"Long Term Support\") is available under the terms of the Extended Support Model." + eol + "*/" + eol;
