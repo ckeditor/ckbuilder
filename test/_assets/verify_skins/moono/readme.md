@@ -19,7 +19,7 @@ Directory Structure
 License
 -------
 
-Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.
 
 Licensed under the terms of any of the following licenses at your choice: [GPL](https://www.gnu.org/licenses/gpl.html), [LGPL](https://www.gnu.org/licenses/lgpl.html) and [MPL](https://www.mozilla.org/MPL/MPL-1.1.html).
 
