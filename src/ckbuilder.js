@@ -35,7 +35,11 @@ this.CKBuilder = ( function() {
 	} catch ( e ) {
 		isMinified = false;
 	}
-	var now = new Date();
+	if(System.env.get('SOURCE_DATE_EPOCH') !== null) {
+		var now = new Date(parseInt(System.getenv("SOURCE_DATE_EPOCH"), 10) * 1000);
+	} else {
+		var now = new Date();
+	}
 	var timestamp = Integer.toString( now.getUTCFullYear() % 1000, 36 ) + Integer.toString( now.getUTCMonth(), 36 ) + Integer.toString( now.getUTCDate(), 36 ) + Integer.toString( now.getUTCHours(), 36 );
 	timestamp = timestamp.toUpperCase();
 
